@@ -142,6 +142,38 @@ body{font-family:'Sarabun',sans-serif;background:var(--bk);color:var(--tx);min-h
 @media(max-width:900px){.sb{display:none}.sb.mob{display:block;position:fixed;top:0;left:0;bottom:0;z-index:150;width:280px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}.mt{display:flex}.sr{grid-template-columns:repeat(2,1fr)}.gr{grid-template-columns:1fr}.f2{grid-template-columns:1fr}.hb .bl{display:none}.chs{display:none}.user-info .uname,.user-info .urole{display:none}}
 @media print{.hdr,.sb,.btn,.ss,.sr,.dp-ac,.user-info{display:none!important}body{background:#fff;color:#222}.mn{padding:0}.dp-bd{border:none;padding:0;background:#fff}.dp-bd h4{color:#D4520F}}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bk)}::-webkit-scrollbar-thumb{background:var(--gm);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--o)}
+
+/* PDF Upload */
+.pdf-section{margin-top:20px;padding-top:20px;border-top:1px solid var(--bd)}
+.pdf-list{margin-top:12px}
+.pdf-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--gd);border-radius:8px;margin-bottom:8px;border:1px solid var(--bd)}
+.pdf-item .pdf-icon{font-size:24px;flex-shrink:0}
+.pdf-item .pdf-name{flex:1;font-size:13px;font-weight:600;color:var(--tx);word-break:break-all}
+.pdf-item .pdf-size{font-size:11px;color:var(--gl);white-space:nowrap}
+.pdf-item .pdf-actions{display:flex;gap:6px}
+.pdf-item .pdf-btn{padding:5px 10px;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.pdf-btn-view{background:var(--inf);color:#fff}.pdf-btn-view:hover{background:#1e88e5}
+.pdf-btn-del{background:var(--dg);color:#fff}.pdf-btn-del:hover{background:#c62828}
+.upload-zone{border:2px dashed var(--bd);border-radius:10px;padding:24px;text-align:center;cursor:pointer;transition:all .2s;margin-top:12px}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--o);background:rgba(242,101,34,0.05)}
+.upload-zone .uz-icon{font-size:36px;margin-bottom:8px;opacity:.6}
+.upload-zone .uz-text{font-size:13px;color:var(--td)}
+.upload-zone .uz-text strong{color:var(--o)}
+.upload-progress{margin-top:8px;height:4px;background:var(--gd);border-radius:2px;overflow:hidden;display:none}
+.upload-progress .bar{height:100%;background:var(--o);width:0;transition:width .3s;border-radius:2px}
+.pdf-viewer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:250;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.pdf-viewer-overlay.open{display:flex}
+.pdf-viewer-box{width:95%;max-width:900px;height:90vh;background:var(--dk);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--bd)}
+.pdf-viewer-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--bd)}
+.pdf-viewer-head h3{font-family:'Kanit',sans-serif;font-size:16px;color:var(--o)}
+.pdf-viewer-body{flex:1}
+.pdf-viewer-body iframe{width:100%;height:100%;border:none}
+.gas-setup{background:rgba(242,101,34,0.08);border:1px solid var(--o);border-radius:10px;padding:16px;margin:20px 0}
+.gas-setup h4{font-family:'Kanit',sans-serif;color:var(--o);margin-bottom:8px}
+.gas-setup input{width:100%;padding:10px;background:var(--gd);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-size:13px;outline:none;font-family:monospace}
+.gas-setup input:focus{border-color:var(--o)}
+.gas-setup .gas-note{font-size:12px;color:var(--td);margin-top:6px}
+
 </style>
 </head>
 <body>
@@ -315,7 +347,7 @@ sb.innerHTML=h;}
 function flt(eq,dt){F.eq=eq;F.dt=dt;F.chip='all';document.querySelectorAll('.ch').forEach(c=>c.classList.remove('on'));document.querySelector('.ch').classList.add('on');closeDP();render();}
 function setCh(v,el){F.chip=v;document.querySelectorAll('.ch').forEach(c=>c.classList.remove('on'));el.classList.add('on');renderCards();}
 function getL(){let l=[...D];const s=document.getElementById('q').value.toLowerCase();if(F.eq)l=l.filter(m=>m.equipType===F.eq);if(F.dt)l=l.filter(m=>m.docType===F.dt);if(F.chip!=='all')l=l.filter(m=>m.docType===F.chip);if(s)l=l.filter(m=>m.name.toLowerCase().includes(s)||m.content.toLowerCase().includes(s)||(m.model&&m.model.toLowerCase().includes(s)));return l;}
-function renderSt(){const b=D.filter(m=>m.equipType==='Boom Lift').length,s=D.filter(m=>m.equipType==='Scissor Lift').length,sc=D.filter(m=>m.docType==='Schematic').length;document.getElementById('sts').innerHTML='<div class="stb"><div class="stn">'+D.length+'</div><div class="stl">คู่มือทั้งหมด</div></div><div class="stb"><div class="stn">'+b+'</div><div class="stl">Boom Lift</div></div><div class="stb"><div class="stn">'+s+'</div><div class="stl">Scissor Lift</div></div><div class="stb"><div class="stn">'+sc+'</div><div class="stl">Schematic</div></div>';}
+function renderSt(){const b=D.filter(m=>m.equipType==='Boom Lift').length,s=D.filter(m=>m.equipType==='Scissor Lift').length,sc=D.filter(m=>m.docType==='Schematic').length;document.getElementById('sts').innerHTML=getGasSetup()+'<div class="stb"><div class="stn">'+D.length+'</div><div class="stl">คู่มือทั้งหมด</div></div><div class="stb"><div class="stn">'+b+'</div><div class="stl">Boom Lift</div></div><div class="stb"><div class="stn">'+s+'</div><div class="stl">Scissor Lift</div></div><div class="stb"><div class="stn">'+sc+'</div><div class="stl">Schematic</div></div>';}
 
 function renderCards(){const l=getL(),g=document.getElementById('gr'),ct=document.getElementById('ct'),bc=document.getElementById('bc');
 let tt='คู่มือ<span class="hl">ทั้งหมด</span>',b='';
@@ -344,8 +376,151 @@ function saveM(){if(curUser&&curUser.role!=='admin')return;const n=document.getE
 function delM(id){if(curUser&&curUser.role!=='admin')return;if(!confirm('ลบคู่มือนี้?'))return;D=D.filter(m=>m.id!==id);sv();closeDP();render();toast('ลบเรียบร้อย');}
 function toast(m,t){const e=document.getElementById('tt');e.textContent=m;e.className='tst '+(t||'ok')+' show';setTimeout(()=>e.classList.remove('show'),3000);}
 
+
+// ===== GAS (Google Apps Script) URL =====
+// ใส่ URL ของ Google Apps Script Web App ที่ Deploy แล้ว
+let GAS_URL = localStorage.getItem('jlg_gas_url') || '';
+
+function setGasUrl(){
+  const inp = document.getElementById('gasUrlInput');
+  if(inp){
+    GAS_URL = inp.value.trim();
+    localStorage.setItem('jlg_gas_url', GAS_URL);
+    toast('บันทึก API URL เรียบร้อย ✅');
+  }
+}
+
+// ===== PDF FUNCTIONS =====
+function uploadPdfFor(manualId){
+  if(!GAS_URL){toast('กรุณาตั้งค่า Google Apps Script URL ก่อน','err');return;}
+  const inp = document.getElementById('pdfFileInput');
+  inp.onchange = function(ev){
+    const file = ev.target.files[0];
+    if(!file) return;
+    if(file.type !== 'application/pdf'){toast('อัปโหลดได้เฉพาะไฟล์ PDF','err');return;}
+    if(file.size > 50*1024*1024){toast('ไฟล์ใหญ่เกิน 50MB','err');return;}
+    
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const base64 = e.target.result.split(',')[1];
+      const prog = document.getElementById('uploadProg-'+manualId);
+      if(prog){prog.style.display='block';prog.querySelector('.bar').style.width='30%';}
+      
+      fetch(GAS_URL, {
+        method: 'POST',
+        body: JSON.stringify({
+          action: 'upload',
+          fileName: file.name,
+          mimeType: 'application/pdf',
+          fileBase64: base64
+        })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if(prog)prog.querySelector('.bar').style.width='100%';
+        if(data.success){
+          // Save PDF info to manual
+          const m = D.find(x=>x.id===manualId);
+          if(m){
+            if(!m.pdfs) m.pdfs = [];
+            m.pdfs.push({
+              fileId: data.fileId,
+              fileName: data.fileName,
+              viewUrl: data.viewUrl,
+              uploadedAt: new Date().toISOString().split('T')[0]
+            });
+            sv();
+          }
+          toast('อัปโหลด PDF สำเร็จ ✅');
+          setTimeout(()=>{ openD(manualId); }, 500);
+        } else {
+          toast('อัปโหลดล้มเหลว: '+(data.error||''),'err');
+        }
+        if(prog){setTimeout(()=>{prog.style.display='none';prog.querySelector('.bar').style.width='0';},1000);}
+      })
+      .catch(err => {
+        toast('เชื่อมต่อ API ไม่ได้','err');
+        if(prog){prog.style.display='none';}
+      });
+    };
+    reader.readAsDataURL(file);
+    inp.value = '';
+  };
+  inp.click();
+}
+
+function deletePdf(manualId, fileId){
+  if(!confirm('ลบไฟล์ PDF นี้?')) return;
+  if(GAS_URL){
+    fetch(GAS_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'delete', fileId: fileId })
+    }).catch(()=>{});
+  }
+  const m = D.find(x=>x.id===manualId);
+  if(m && m.pdfs){
+    m.pdfs = m.pdfs.filter(p=>p.fileId!==fileId);
+    sv();
+    openD(manualId);
+    toast('ลบ PDF เรียบร้อย');
+  }
+}
+
+function viewPdf(url, name){
+  document.getElementById('pdfViewerTitle').textContent = name;
+  document.getElementById('pdfViewerFrame').src = url;
+  document.getElementById('pdfViewer').classList.add('open');
+}
+
+function closePdfViewer(){
+  document.getElementById('pdfViewer').classList.remove('open');
+  document.getElementById('pdfViewerFrame').src = '';
+}
+
+function getPdfSection(m){
+  const isAdmin = curUser && curUser.role === 'admin';
+  let h = '<div class="pdf-section"><h4>📎 ไฟล์ PDF แนบ</h4>';
+  if(m.pdfs && m.pdfs.length > 0){
+    h += '<div class="pdf-list">';
+    m.pdfs.forEach(function(p){
+      var fn = p.fileName.replace(/'/g,'');
+      h += '<div class="pdf-item"><span class="pdf-icon">📄</span><span class="pdf-name">'+p.fileName+'</span><span class="pdf-size">'+p.uploadedAt+'</span><div class="pdf-actions">';
+      h += '<button class="pdf-btn pdf-btn-view" onclick="event.stopPropagation();viewPdf(''+p.viewUrl+'',''+fn+'')">👁️ ดู</button>';
+      if(isAdmin) h += '<button class="pdf-btn pdf-btn-del" onclick="event.stopPropagation();deletePdf(''+m.id+'',''+p.fileId+'')">🗑️</button>';
+      h += '</div></div>';
+    });
+    h += '</div>';
+  } else { h += '<p style="color:var(--gl);font-size:13px;margin-top:8px">ยังไม่มีไฟล์ PDF แนบ</p>'; }
+  if(isAdmin){
+    h += '<div class="upload-zone" onclick="uploadPdfFor(''+m.id+'')"><div class="uz-icon">📤</div><div class="uz-text">คลิกเพื่อ <strong>อัปโหลด PDF</strong> (สูงสุด 50MB)</div></div>';
+    h += '<div class="upload-progress" id="uploadProg-'+m.id+'"><div class="bar"></div></div>';
+  }
+  h += '</div>';
+  return h;
+}
+
+function getGasSetup(){
+  if(curUser && curUser.role !== 'admin') return '';
+  return '<div class="gas-setup"><h4>⚙️ ตั้งค่า API สำหรับอัปโหลด PDF</h4><input type="text" id="gasUrlInput" value="'+GAS_URL+'" placeholder="วาง Google Apps Script Web App URL ที่นี่"><button class="btn bo bs" style="margin-top:8px" onclick="setGasUrl()">💾 บันทึก URL</button><div class="gas-note">ใส่ URL จาก Google Apps Script ที่ Deploy แล้ว (ทำครั้งเดียว)</div></div>';
+}
+
 // ===== START =====
 checkSession();
 </script>
+
+<!-- PDF Viewer -->
+<div class="pdf-viewer-overlay" id="pdfViewer" onclick="if(event.target===this)closePdfViewer()">
+  <div class="pdf-viewer-box">
+    <div class="pdf-viewer-head">
+      <h3 id="pdfViewerTitle">PDF Preview</h3>
+      <button class="btn bg bs" onclick="closePdfViewer()">✕ ปิด</button>
+    </div>
+    <div class="pdf-viewer-body">
+      <iframe id="pdfViewerFrame" src=""></iframe>
+    </div>
+  </div>
+</div>
+<input type="file" id="pdfFileInput" accept=".pdf" style="display:none">
+
 </body>
 </html>
