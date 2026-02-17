@@ -3,174 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JLG Manual System</title>
+<title>JLG Maintenance Manual System</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Kanit:wght@400;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 :root{--o:#F26522;--ol:#FF8243;--od:#D4520F;--og:rgba(242,101,34,0.25);--bk:#1A1A1A;--dk:#222;--gd:#2D2D2D;--gm:#3A3A3A;--gl:#888;--tx:#E8E8E8;--td:#AAA;--bd:#3A3A3A;--ok:#4CAF50;--dg:#E53935;--inf:#42A5F5;--wn:#FFA726}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Sarabun',sans-serif;background:var(--bk);color:var(--tx);min-height:100vh;line-height:1.6}
-.login-overlay{position:fixed;inset:0;background:var(--bk);z-index:9999;display:flex;align-items:center;justify-content:center}
-.login-overlay.hidden{display:none}
-.login-box{background:var(--dk);border:1px solid var(--bd);border-radius:16px;padding:40px;width:90%;max-width:420px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
-.login-logo{width:80px;height:80px;background:var(--o);border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff;margin:0 auto 20px;box-shadow:0 4px 30px rgba(242,101,34,0.4);position:relative;overflow:hidden}
-.login-logo::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.15) 50%,transparent 60%);animation:sh 3s infinite}
+.login-ov{position:fixed;inset:0;background:var(--bk);z-index:9999;display:flex;align-items:center;justify-content:center}
+.login-ov.hid{display:none}
+.lbox{background:var(--dk);border:1px solid var(--bd);border-radius:16px;padding:40px;width:90%;max-width:420px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.llogo{width:80px;height:80px;background:var(--o);border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff;margin:0 auto 20px;box-shadow:0 4px 30px rgba(242,101,34,0.4);position:relative;overflow:hidden}
+.llogo::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.15) 50%,transparent 60%);animation:sh 3s infinite}
 @keyframes sh{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
-.login-box h2{font-family:'Kanit',sans-serif;font-size:22px;font-weight:800;margin-bottom:4px;color:#fff}
-.login-box h2 span{color:var(--o)}
-.login-box .sub{font-size:12px;color:var(--o);font-family:'Bebas Neue',sans-serif;letter-spacing:3px;margin-bottom:28px}
-.login-fg{margin-bottom:16px;text-align:left}
-.login-fg label{display:block;font-size:13px;font-weight:700;color:var(--td);margin-bottom:5px}
-.login-fg input{width:100%;padding:12px 14px;background:var(--gd);border:1px solid var(--bd);border-radius:8px;color:var(--tx);font-family:'Sarabun',sans-serif;font-size:15px;outline:none}
-.login-fg input:focus{border-color:var(--o);box-shadow:0 0 0 3px var(--og)}
-.login-fg input::placeholder{color:var(--gl)}
-.login-err{color:var(--dg);font-size:13px;font-weight:700;margin-bottom:12px;min-height:20px}
-.login-btn{width:100%;padding:14px;background:var(--o);color:#fff;border:none;border-radius:8px;font-family:'Sarabun',sans-serif;font-size:16px;font-weight:800;cursor:pointer;transition:all .2s}
-.login-btn:hover{background:var(--ol);transform:translateY(-1px)}
-.login-footer{margin-top:20px;font-size:12px;color:var(--gl)}
-.remember-row{display:flex;align-items:center;gap:8px;margin-bottom:16px}
-.remember-row input[type=checkbox]{accent-color:var(--o);width:16px;height:16px}
-.remember-row label{font-size:13px;color:var(--td);cursor:pointer}
+.lbox h2{font-family:'Kanit',sans-serif;font-size:22px;font-weight:800;color:#fff}.lbox h2 span{color:var(--o)}
+.lbox .sub{font-size:12px;color:var(--o);font-family:'Bebas Neue',sans-serif;letter-spacing:3px;margin-bottom:28px}
+.lfg{margin-bottom:16px;text-align:left}.lfg label{display:block;font-size:13px;font-weight:700;color:var(--td);margin-bottom:5px}
+.lfg input{width:100%;padding:12px;background:var(--gd);border:1px solid var(--bd);border-radius:8px;color:var(--tx);font-size:15px;outline:none;font-family:'Sarabun',sans-serif}
+.lfg input:focus{border-color:var(--o);box-shadow:0 0 0 3px var(--og)}
+.lerr{color:var(--dg);font-size:13px;font-weight:700;margin-bottom:12px;min-height:20px}
+.lbtn{width:100%;padding:14px;background:var(--o);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Sarabun',sans-serif}.lbtn:hover{background:var(--ol)}
+.lrem{display:flex;align-items:center;gap:8px;margin-bottom:16px}.lrem input{accent-color:var(--o);width:16px;height:16px}.lrem label{font-size:13px;color:var(--td);cursor:pointer}
+.lfooter{margin-top:20px;font-size:12px;color:var(--gl)}
+.app{display:none}.app.show{display:block}
 .hdr{background:linear-gradient(180deg,#2A2A2A,var(--bk));border-bottom:3px solid var(--o);position:sticky;top:0;z-index:100}
-.hdr-m{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1500px;margin:0 auto}
-.la{display:flex;align-items:center;gap:16px}
-.mt{display:none;background:var(--gd);border:1px solid var(--bd);color:var(--o);font-size:22px;padding:8px 12px;border-radius:8px;cursor:pointer}
-.lb{width:48px;height:48px;background:var(--o);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;box-shadow:0 4px 20px rgba(242,101,34,0.3);position:relative;overflow:hidden}
+.hdr-m{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1400px;margin:0 auto}
+.la{display:flex;align-items:center;gap:14px}
+.lb{width:46px;height:46px;background:var(--o);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:19px;color:#fff;box-shadow:0 4px 20px rgba(242,101,34,0.3);position:relative;overflow:hidden}
 .lb::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.15) 50%,transparent 60%);animation:sh 3s infinite}
 .li h1{font-family:'Kanit',sans-serif;font-size:18px;font-weight:800;color:#fff}.li h1 span{color:var(--o)}
 .li p{font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--o);letter-spacing:3px}
 .hb{display:flex;gap:8px;align-items:center}
-.user-info{display:flex;align-items:center;gap:10px;padding:6px 14px;background:var(--gd);border-radius:8px;border:1px solid var(--bd)}
-.user-info .avatar{width:30px;height:30px;background:var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff}
-.user-info .uname{font-size:13px;color:var(--tx);font-weight:600}
-.user-info .urole{font-size:10px;color:var(--td)}
-.btn{padding:10px 18px;border:none;border-radius:6px;font-family:'Sarabun',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.bo{background:var(--o);color:#fff}.bo:hover{background:var(--ol);transform:translateY(-1px)}
+.uinfo{display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--gd);border-radius:8px;border:1px solid var(--bd)}
+.uinfo .uav{width:28px;height:28px;background:var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
+.uinfo .un{font-size:12px;font-weight:600}.uinfo .ur{font-size:10px;color:var(--td)}
+.btn{padding:9px 16px;border:none;border-radius:6px;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.bo{background:var(--o);color:#fff}.bo:hover{background:var(--ol)}
 .bg{background:transparent;color:var(--td);border:1px solid var(--bd)}.bg:hover{border-color:var(--o);color:var(--o)}
-.bs{padding:7px 14px;font-size:13px}
 .bd{background:var(--dg);color:#fff}
-.ss{background:var(--dk);padding:10px 24px;border-bottom:1px solid var(--bd)}
-.si{max-width:1500px;margin:0 auto;display:flex;align-items:center;gap:12px}
-.sw{position:relative;flex:1;max-width:500px}
-.sw input{width:100%;padding:10px 14px 10px 40px;background:var(--gd);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-family:'Sarabun',sans-serif;font-size:14px;outline:none}
-.sw input:focus{border-color:var(--o);box-shadow:0 0 0 2px var(--og)}
-.sw input::placeholder{color:var(--gl)}
-.sw .ic{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gl)}
-.chs{display:flex;gap:6px;flex-wrap:wrap}
-.ch{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid var(--bd);background:var(--gd);color:var(--td);transition:all .15s}
-.ch:hover,.ch.on{background:var(--o);color:#fff;border-color:var(--o)}
-.ly{display:flex;max-width:1500px;margin:0 auto;min-height:calc(100vh - 160px)}
-.app-wrap{display:none}.app-wrap.show{display:block}
-.sb{width:280px;background:var(--dk);border-right:1px solid var(--bd);flex-shrink:0;overflow-y:auto;max-height:calc(100vh - 130px);position:sticky;top:130px}
-.sb-d{padding:12px 18px 6px;font-size:10px;color:var(--gl);text-transform:uppercase;letter-spacing:2px;font-weight:700}
-.sb-s{border-bottom:1px solid var(--bd)}
-.sb-h{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;transition:background .15s;user-select:none}
-.sb-h:hover{background:var(--gd)}
-.sb-hl{display:flex;align-items:center;gap:10px}
-.sb-i{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
-.sb-i.boom{background:rgba(242,101,34,0.15)}.sb-i.scissor{background:rgba(66,165,245,0.15)}.sb-i.sch{background:rgba(76,175,80,0.15)}
-.sb-t{font-family:'Kanit',sans-serif;font-size:13px;font-weight:700}.sb-t small{display:block;font-family:'Sarabun',sans-serif;font-size:11px;font-weight:400;color:var(--td)}
-.sb-c{background:var(--gm);color:var(--td);font-size:11px;padding:2px 8px;border-radius:10px;font-weight:700}
-.sb-a{color:var(--gl);transition:transform .2s;font-size:12px}
-.sb-s.op .sb-a{transform:rotate(180deg)}
-.sb-is{display:none;padding:0 0 8px}.sb-s.op .sb-is{display:block}
-.sb-it{padding:9px 16px 9px 60px;font-size:13px;cursor:pointer;transition:all .12s;display:flex;align-items:center;justify-content:space-between;color:var(--td);border-left:3px solid transparent}
-.sb-it:hover{background:var(--gd);color:var(--tx);border-left-color:var(--od)}
-.sb-it.on{background:rgba(242,101,34,0.08);color:var(--o);font-weight:700;border-left-color:var(--o)}
-.sb-it .sb-b{font-size:11px;background:var(--gm);padding:1px 7px;border-radius:8px;color:var(--gl)}.sb-it.on .sb-b{background:var(--o);color:#fff}
-.mn{flex:1;padding:24px;overflow-y:auto}
-.sr{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
-.stb{background:var(--dk);border:1px solid var(--bd);border-radius:10px;padding:16px;text-align:center;transition:border-color .2s}.stb:hover{border-color:var(--o)}
-.stn{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--o);line-height:1}
-.stl{font-size:12px;color:var(--td);margin-top:4px}
-.ct-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
-.ct-top h2{font-family:'Kanit',sans-serif;font-size:22px;font-weight:800}.ct-top h2 .hl{color:var(--o)}
-.bc{font-size:13px;color:var(--td);margin-bottom:16px}.bc span{color:var(--o);font-weight:600}
-.gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-.cd{background:var(--dk);border:1px solid var(--bd);border-radius:10px;padding:20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
-.cd::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--o);opacity:0;transition:opacity .2s}
-.cd:hover{border-color:var(--od);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,0.4)}.cd:hover::before{opacity:1}
-.cd-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
-.cd h3{font-family:'Kanit',sans-serif;font-size:15px;font-weight:700;line-height:1.4;flex:1}
-.tg{font-size:10px;padding:3px 10px;border-radius:4px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;margin-left:10px}
-.tg-op{background:rgba(242,101,34,0.15);color:var(--o)}.tg-pt{background:rgba(66,165,245,0.15);color:var(--inf)}.tg-sv{background:rgba(76,175,80,0.15);color:var(--ok)}.tg-sc{background:rgba(255,167,38,0.15);color:var(--wn)}
-.cd-d{font-size:13px;color:var(--td);margin-bottom:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.cd-m{display:flex;align-items:center;gap:14px;font-size:11px;color:var(--gl)}.cd-m span{display:flex;align-items:center;gap:4px}
-.pd{width:8px;height:8px;border-radius:50%;display:inline-block}.pd.u{background:var(--dg);box-shadow:0 0 6px rgba(229,57,53,0.5)}.pd.i{background:var(--o)}.pd.n{background:var(--ok)}
-.dp{display:none}.dp.show{display:block}
-.dp-bk{display:inline-flex;align-items:center;gap:6px;color:var(--o);cursor:pointer;font-weight:700;font-size:14px;margin-bottom:20px}.dp-bk:hover{color:var(--ol)}
-.dp-hd h1{font-family:'Kanit',sans-serif;font-size:24px;font-weight:800;margin-bottom:10px}
-.dp-if{display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:13px;color:var(--td);margin-bottom:16px}
-.dp-ac{display:flex;gap:8px;margin-bottom:20px}
-.dp-bd{background:var(--dk);border:1px solid var(--bd);border-radius:12px;padding:28px;line-height:1.9;font-size:15px}
-.dp-bd h4{font-family:'Kanit',sans-serif;font-size:17px;color:var(--o);margin:24px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--bd)}.dp-bd h4:first-child{margin-top:0}
-.dp-bd ul,.dp-bd ol{padding-left:24px;margin:8px 0}.dp-bd li{margin:5px 0;color:var(--td)}
-.wb{background:rgba(229,57,53,0.08);border-left:4px solid var(--dg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;color:#ef9a9a;font-weight:600}
-.tb{background:rgba(76,175,80,0.08);border-left:4px solid var(--ok);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;color:#a5d6a7}
-.mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px)}.mbg.open{display:flex}
-.mbox{background:var(--dk);border:1px solid var(--bd);border-radius:14px;padding:28px;width:92%;max-width:720px;max-height:92vh;overflow-y:auto}
-.mbox h2{font-family:'Kanit',sans-serif;font-size:20px;color:var(--o);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--bd)}
-.fg{margin-bottom:16px}.fg label{display:block;font-size:13px;font-weight:700;color:var(--td);margin-bottom:5px}
-.fg input,.fg select,.fg textarea{width:100%;padding:10px 14px;background:var(--gd);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-family:'Sarabun',sans-serif;font-size:14px;outline:none}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--o);box-shadow:0 0 0 2px var(--og)}
-.fg textarea{min-height:200px;resize:vertical;line-height:1.7}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.mft{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--bd)}
-.tst{position:fixed;bottom:24px;right:24px;padding:14px 24px;border-radius:8px;font-weight:700;z-index:300;transform:translateY(80px);opacity:0;transition:all .3s;font-size:14px}.tst.show{transform:translateY(0);opacity:1}.tst.ok{background:var(--ok);color:#fff}.tst.err{background:var(--dg);color:#fff}
-.emp{text-align:center;padding:60px 20px;color:var(--gl);grid-column:1/-1}
-.pdf-sec{margin-top:20px;padding-top:20px;border-top:1px solid var(--bd)}
-.pdf-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--gd);border-radius:8px;margin-bottom:8px;border:1px solid var(--bd)}
-.pdf-item .pfi{font-size:24px}.pdf-item .pfn{flex:1;font-size:13px;font-weight:600;word-break:break-all}.pdf-item .pfd{font-size:11px;color:var(--gl)}
-.pfb{padding:5px 10px;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
-.pfb-v{background:var(--inf);color:#fff}.pfb-d{background:var(--dg);color:#fff}
-.uz{border:2px dashed var(--bd);border-radius:10px;padding:24px;text-align:center;cursor:pointer;transition:all .2s;margin-top:12px}
-.uz:hover{border-color:var(--o);background:rgba(242,101,34,0.05)}
-.uz-i{font-size:36px;opacity:.6}.uz-t{font-size:13px;color:var(--td)}.uz-t strong{color:var(--o)}
-.uprog{margin-top:8px;height:4px;background:var(--gd);border-radius:2px;overflow:hidden;display:none}
-.uprog .ubar{height:100%;background:var(--o);width:0;transition:width .3s}
+/* File Explorer */
+.explorer{max-width:1400px;margin:0 auto;padding:20px 24px}
+.gas-box{background:rgba(242,101,34,0.08);border:1px solid var(--o);border-radius:10px;padding:14px;margin-bottom:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.gas-box h4{font-family:'Kanit',sans-serif;color:var(--o);font-size:14px}
+.gas-box input{flex:1;min-width:200px;padding:8px 12px;background:var(--gd);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-size:12px;outline:none;font-family:monospace}
+.gas-box input:focus{border-color:var(--o)}
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.breadcrumb{display:flex;align-items:center;gap:6px;flex:1;font-size:14px;color:var(--td);flex-wrap:wrap}
+.breadcrumb span{cursor:pointer;color:var(--o);font-weight:600}.breadcrumb span:hover{text-decoration:underline}
+.breadcrumb .sep{color:var(--gl);cursor:default;font-weight:400}
+.file-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.file-card{background:var(--dk);border:1px solid var(--bd);border-radius:10px;padding:16px 12px;text-align:center;cursor:pointer;transition:all .15s;position:relative}
+.file-card:hover{border-color:var(--od);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.3)}
+.file-card .ficon{font-size:42px;margin-bottom:8px;display:block}
+.file-card .fname{font-size:12px;font-weight:600;color:var(--tx);word-break:break-all;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.file-card .fmeta{font-size:10px;color:var(--gl);margin-top:4px}
+.file-card .fdel{position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--dg);color:#fff;border:none;font-size:11px;cursor:pointer;display:none;align-items:center;justify-content:center}
+.file-card:hover .fdel{display:flex}
+.loading{text-align:center;padding:60px;color:var(--gl);font-size:16px}
+.loading .spinner{display:inline-block;width:32px;height:32px;border:3px solid var(--bd);border-top-color:var(--o);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{text-align:center;padding:60px;color:var(--gl)}
+.empty-state .ei{font-size:56px;opacity:.4;margin-bottom:12px}
+/* PDF Viewer */
 .pvw{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:250;align-items:center;justify-content:center}.pvw.open{display:flex}
-.pvw-box{width:95%;max-width:900px;height:90vh;background:var(--dk);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--bd)}
-.pvw-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--bd)}
-.pvw-head h3{font-family:'Kanit',sans-serif;font-size:16px;color:var(--o)}
-.pvw-body{flex:1}.pvw-body iframe{width:100%;height:100%;border:none}
-.gas-box{background:rgba(242,101,34,0.08);border:1px solid var(--o);border-radius:10px;padding:16px;margin-bottom:20px}
-.gas-box h4{font-family:'Kanit',sans-serif;color:var(--o);margin-bottom:8px}
-.gas-box input{width:100%;padding:10px;background:var(--gd);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-size:13px;outline:none;font-family:monospace}
-.gas-box .gn{font-size:12px;color:var(--td);margin-top:6px}
-@media(max-width:900px){.sb{display:none}.sb.mob{display:block;position:fixed;top:0;left:0;bottom:0;z-index:150;width:280px}.mt{display:flex}.sr{grid-template-columns:repeat(2,1fr)}.gr{grid-template-columns:1fr}.f2{grid-template-columns:1fr}.hb .bl{display:none}.chs{display:none}.user-info .uname,.user-info .urole{display:none}}
-@media print{.hdr,.sb,.btn,.ss,.sr,.dp-ac,.user-info,.gas-box,.pdf-sec{display:none!important}body{background:#fff;color:#222}.mn{padding:0}.dp-bd{border:none;padding:0;background:#fff}.dp-bd h4{color:#D4520F}}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bk)}::-webkit-scrollbar-thumb{background:var(--gm);border-radius:3px}
+.pvw-box{width:95%;max-width:1000px;height:92vh;background:var(--dk);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--bd)}
+.pvw-hd{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--bd)}
+.pvw-hd h3{font-family:'Kanit',sans-serif;font-size:14px;color:var(--o);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pvw-bd{flex:1}.pvw-bd iframe{width:100%;height:100%;border:none}
+.tst{position:fixed;bottom:24px;right:24px;padding:14px 24px;border-radius:8px;font-weight:700;z-index:300;transform:translateY(80px);opacity:0;transition:all .3s;font-size:14px}.tst.show{transform:translateY(0);opacity:1}.tst.ok{background:var(--ok);color:#fff}.tst.err{background:var(--dg);color:#fff}
+@media(max-width:700px){.file-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}.hb .bl{display:none}.uinfo .un,.uinfo .ur{display:none}.gas-box{flex-direction:column;align-items:stretch}}
 </style>
 </head>
 <body>
 
-<div class="login-overlay" id="loginScreen">
-<div class="login-box">
-<div class="login-logo">JLG</div>
+<!-- LOGIN -->
+<div class="login-ov" id="LS">
+<div class="lbox">
+<div class="llogo">JLG</div>
 <h2>คู่มือซ่อมบำรุง <span>JLG</span></h2>
 <div class="sub">MAINTENANCE MANUAL SYSTEM</div>
-<div class="login-fg"><label>Username</label><input type="text" id="loginUser" placeholder="กรอก Username" onkeydown="if(event.key==='Enter')doLogin()"></div>
-<div class="login-fg"><label>Password</label><input type="password" id="loginPass" placeholder="กรอกรหัสผ่าน" onkeydown="if(event.key==='Enter')doLogin()"></div>
-<div class="remember-row"><input type="checkbox" id="remMe"><label for="remMe">จดจำการเข้าสู่ระบบ</label></div>
-<div class="login-err" id="loginErr"></div>
-<button class="login-btn" onclick="doLogin()">🔐 เข้าสู่ระบบ</button>
-<div class="login-footer">สำหรับทีมช่างซ่อมบำรุง JLG เท่านั้น</div>
+<div class="lfg"><label>Username</label><input id="lu" placeholder="Username" onkeydown="if(event.key==='Enter')doLogin()"></div>
+<div class="lfg"><label>Password</label><input type="password" id="lp" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+<div class="lrem"><input type="checkbox" id="rm"><label for="rm">จดจำการเข้าสู่ระบบ</label></div>
+<div class="lerr" id="le"></div>
+<button class="lbtn" onclick="doLogin()">🔐 เข้าสู่ระบบ</button>
+<div class="lfooter">สำหรับทีมช่างซ่อมบำรุง JLG เท่านั้น</div>
 </div></div>
 
-<div class="app-wrap" id="appWrap">
-<header class="hdr"><div class="hdr-m"><div class="la"><button class="mt" onclick="document.getElementById('sb').classList.toggle('mob')">☰</button><div class="lb">JLG</div><div class="li"><h1>คู่มือซ่อมบำรุง <span>JLG</span></h1><p>MAINTENANCE MANUAL SYSTEM</p></div></div><div class="hb"><div class="user-info"><div class="avatar" id="uAv">A</div><div><div class="uname" id="uNm">-</div><div class="urole" id="uRl">-</div></div></div><button class="btn bo bs" id="btnAdd" onclick="openM()" style="display:none">＋ เพิ่มคู่มือ</button><button class="btn bg bs" onclick="doLogout()">🚪 ออก</button></div></div></header>
-<div class="ss"><div class="si"><div class="sw"><span class="ic">🔍</span><input id="q" placeholder="ค้นหาคู่มือ..." oninput="renderCards()"></div><div class="chs"><div class="ch on" onclick="setCh('all',this)">ทั้งหมด</div><div class="ch" onclick="setCh('Operation Manual',this)">📖 Operation</div><div class="ch" onclick="setCh('Part Manual',this)">🔩 Part</div><div class="ch" onclick="setCh('Service Manual',this)">🛠️ Service</div><div class="ch" onclick="setCh('Schematic',this)">📐 Schematic</div></div></div></div>
-<div class="ly"><aside class="sb" id="sb"></aside><main class="mn"><div id="gasArea"></div><div class="sr" id="sts"></div><div id="lv"><div class="bc" id="bc"></div><div class="ct-top"><h2 id="ct"></h2></div><div class="gr" id="gr"></div></div><div class="dp" id="dp"></div></main></div>
+<!-- APP -->
+<div class="app" id="APP">
+<header class="hdr"><div class="hdr-m"><div class="la"><div class="lb">JLG</div><div class="li"><h1>คู่มือซ่อมบำรุง <span>JLG</span></h1><p>MAINTENANCE MANUAL SYSTEM</p></div></div><div class="hb"><div class="uinfo"><div class="uav" id="uAv">A</div><div><div class="un" id="uNm">-</div><div class="ur" id="uRl">-</div></div></div><button class="btn bg" onclick="doLogout()">🚪 <span class="bl">ออกจากระบบ</span></button></div></div></header>
+
+<div class="explorer">
+  <div id="gasArea"></div>
+  <div class="toolbar">
+    <div class="breadcrumb" id="bcr"></div>
+    <button class="btn bo" id="btnUp" onclick="pickFile()" style="display:none">📤 อัปโหลดไฟล์</button>
+    <button class="btn bg" id="btnNf" onclick="newFolder()" style="display:none">📁 สร้างโฟลเดอร์</button>
+  </div>
+  <div id="content"></div>
+</div>
 </div>
 
-<div class="mbg" id="mbg" onclick="if(event.target===this)closeM()"><div class="mbox"><h2 id="mtt">🔧 เพิ่มคู่มือใหม่</h2><div class="fg"><label>ชื่อคู่มือ *</label><input id="fN"></div><div class="f2"><div class="fg"><label>ประเภทเครื่อง *</label><select id="fE"><option value="">--</option><option value="Boom Lift">🏗️ Boom Lift</option><option value="Scissor Lift">✂️ Scissor Lift</option></select></div><div class="fg"><label>ประเภทคู่มือ *</label><select id="fD"><option value="">--</option><option value="Operation Manual">📖 Operation</option><option value="Part Manual">🔩 Part</option><option value="Service Manual">🛠️ Service</option><option value="Schematic">📐 Schematic</option></select></div></div><div class="f2"><div class="fg"><label>รุ่นเครื่อง</label><input id="fM"></div><div class="fg"><label>ความสำคัญ</label><select id="fP"><option>ปกติ</option><option>สำคัญ</option><option>เร่งด่วน</option></select></div></div><div class="fg"><label>เนื้อหา *</label><textarea id="fC"></textarea></div><div class="mft"><button class="btn bg" onclick="closeM()">ยกเลิก</button><button class="btn bo" onclick="saveM()">💾 บันทึก</button></div></div></div>
-
-<div class="pvw" id="pvw" onclick="if(event.target===this)closePV()"><div class="pvw-box"><div class="pvw-head"><h3 id="pvwT">PDF</h3><button class="btn bg bs" onclick="closePV()">✕ ปิด</button></div><div class="pvw-body"><iframe id="pvwF"></iframe></div></div></div>
+<!-- PDF Viewer -->
+<div class="pvw" id="pvw" onclick="if(event.target===this)closePV()">
+<div class="pvw-box"><div class="pvw-hd"><h3 id="pvwT">PDF</h3><button class="btn bg" onclick="closePV()">✕ ปิด</button></div><div class="pvw-bd"><iframe id="pvwF"></iframe></div></div>
+</div>
 
 <div class="tst" id="tt"></div>
-<input type="file" id="pdfIn" accept=".pdf" style="display:none">
+<input type="file" id="fIn" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.gif,.zip,.rar" style="display:none">
 
 <script>
-// ===== USERS =====
 var USERS=[
 {username:'admin',password:'admin1234',name:'หัวหน้าช่าง',role:'admin',display:'Admin'},
 {username:'tech1',password:'tech1234',name:'ช่าง 1',role:'tech',display:'Technician'},
@@ -186,177 +128,193 @@ var USERS=[
 {username:'tech11',password:'tech1134',name:'ช่าง 11',role:'tech',display:'Technician'},
 {username:'tech12',password:'tech1234x',name:'ช่าง 12',role:'tech',display:'Technician'}
 ];
+
 var curUser=null;
-var GAS_URL=localStorage.getItem('jlg_gas')||'';
+var GAS=localStorage.getItem('jlg_gas')||'';
+var ROOT_ID='1NfXyo_lAhLKztNQDiKijhAuSdSiK_1z6';
+var navStack=[{id:ROOT_ID,name:'📚 คู่มือทั้งหมด'}];
 
 function doLogin(){
-var u=document.getElementById('loginUser').value.trim(),p=document.getElementById('loginPass').value;
-var f=null;
-for(var i=0;i<USERS.length;i++){if(USERS[i].username===u&&USERS[i].password===p){f=USERS[i];break;}}
-if(!f){document.getElementById('loginErr').textContent='❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';return;}
-curUser=f;
-if(document.getElementById('remMe').checked){localStorage.setItem('jlg_ses',JSON.stringify({username:f.username}));}
-showApp();
+  var u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value,f=null;
+  for(var i=0;i<USERS.length;i++){if(USERS[i].username===u&&USERS[i].password===p){f=USERS[i];break;}}
+  if(!f){document.getElementById('le').textContent='❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';return;}
+  curUser=f;
+  if(document.getElementById('rm').checked)localStorage.setItem('jlg_ses',JSON.stringify({username:f.username}));
+  showApp();
 }
-function doLogout(){curUser=null;localStorage.removeItem('jlg_ses');document.getElementById('appWrap').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden');document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';document.getElementById('loginErr').textContent='';}
-function checkSession(){
-var s=localStorage.getItem('jlg_ses');
-if(s){try{var d=JSON.parse(s);for(var i=0;i<USERS.length;i++){if(USERS[i].username===d.username){curUser=USERS[i];showApp();return;}}}catch(e){}}
-}
+function doLogout(){curUser=null;localStorage.removeItem('jlg_ses');document.getElementById('APP').classList.remove('show');document.getElementById('LS').classList.remove('hid');document.getElementById('lu').value='';document.getElementById('lp').value='';document.getElementById('le').textContent='';}
+function checkSession(){var s=localStorage.getItem('jlg_ses');if(s){try{var d=JSON.parse(s);for(var i=0;i<USERS.length;i++){if(USERS[i].username===d.username){curUser=USERS[i];showApp();return;}}}catch(e){}}}
+
 function showApp(){
-document.getElementById('loginScreen').classList.add('hidden');
-document.getElementById('appWrap').classList.add('show');
-document.getElementById('uNm').textContent=curUser.name;
-document.getElementById('uRl').textContent=curUser.display;
-document.getElementById('uAv').textContent=curUser.name.charAt(0);
-document.getElementById('btnAdd').style.display=curUser.role==='admin'?'inline-flex':'none';
-if(curUser.role==='admin'){
-document.getElementById('gasArea').innerHTML='<div class="gas-box"><h4>⚙️ ตั้งค่า API อัปโหลด PDF</h4><input id="gasInp" value="'+GAS_URL+'" placeholder="วาง Google Apps Script Web App URL"><button class="btn bo bs" style="margin-top:8px" onclick="saveGas()">💾 บันทึก URL</button><div class="gn">ใส่ URL จาก Google Apps Script (ทำครั้งเดียว)</div></div>';
-}else{document.getElementById('gasArea').innerHTML='';}
-initData();
+  document.getElementById('LS').classList.add('hid');
+  document.getElementById('APP').classList.add('show');
+  document.getElementById('uNm').textContent=curUser.name;
+  document.getElementById('uRl').textContent=curUser.display;
+  document.getElementById('uAv').textContent=curUser.name.charAt(0);
+  var isAdm=curUser.role==='admin';
+  document.getElementById('btnUp').style.display=isAdm?'inline-flex':'none';
+  document.getElementById('btnNf').style.display=isAdm?'inline-flex':'none';
+  if(isAdm){
+    document.getElementById('gasArea').innerHTML='<div class="gas-box"><h4>⚙️ API URL:</h4><input id="gasInp" value="'+GAS+'" placeholder="วาง Google Apps Script Web App URL"><button class="btn bo" onclick="saveGas()">💾 บันทึก</button></div>';
+  }else{document.getElementById('gasArea').innerHTML='';}
+  navStack=[{id:ROOT_ID,name:'📚 คู่มือทั้งหมด'}];
+  loadFolder(ROOT_ID);
 }
-function saveGas(){GAS_URL=document.getElementById('gasInp').value.trim();localStorage.setItem('jlg_gas',GAS_URL);toast('บันทึก API URL เรียบร้อย ✅');}
+function saveGas(){GAS=document.getElementById('gasInp').value.trim();localStorage.setItem('jlg_gas',GAS);toast('บันทึก API URL เรียบร้อย ✅');}
 
-// ===== DATA =====
-var SK='jlg_m_v6';
-var SAM=[
-{id:'b-op-1',name:'Boom Lift Pre-Operation Inspection (Daily)',equipType:'Boom Lift',docType:'Operation Manual',model:'JLG 450AJ / 600AJ / 800AJ',priority:'เร่งด่วน',content:"## ก่อนสตาร์ทเครื่อง (Walk-Around)\n- ตรวจรอยรั่วน้ำมันไฮดรอลิก น้ำมันเครื่อง Coolant\n- ตรวจยาง ลมตามสเปค\n- ตรวจ Guardrail + ประตูตะกร้า\n- ตรวจป้ายเตือน สติ๊กเกอร์ความปลอดภัย\n- ตรวจ Lanyard Anchor Point\n\n## หลังสตาร์ท (Function Test)\n- Emergency Stop ทั้ง Platform + Ground\n- Boom Up/Down Telescope In/Out\n- Swing Left/Right\n- Tilt Alarm\n- Drive & Steer 4 ทิศ\n- Horn\n\n⚠️ คำเตือน: พบข้อบกพร่อง ห้ามใช้งาน ติด OUT OF SERVICE\n✅ เคล็ดลับ: ใช้เวลา 10-15 นาทีตรวจเช้า",createdAt:'2025-02-01',updatedAt:'2025-02-14',author:'หัวหน้าช่าง'},
-{id:'b-op-2',name:'วิธีใช้งาน Platform Control',equipType:'Boom Lift',docType:'Operation Manual',model:'JLG 450AJ',priority:'สำคัญ',content:"## แผงควบคุมบนตะกร้า\n- Joystick ซ้าย: Boom Up/Down\n- Joystick ขวา: Swing\n- Toggle: Telescope\n- Foot Switch: Drive\n\n## ลำดับเปิดเครื่อง\n1. Key Switch OFF\n2. E-Stop ดึงออก\n3. Key Switch ON\n4. เลือก Platform Control\n5. รอ Self-Test\n\n⚠️ คำเตือน: สวม Harness ก่อนยกบูมทุกครั้ง\n✅ เคล็ดลับ: หัดใช้ที่พื้นราบก่อน",createdAt:'2025-02-03',updatedAt:'2025-02-14',author:'หัวหน้าช่าง'},
-{id:'b-op-3',name:'กฎความปลอดภัยการทำงานบนที่สูง',equipType:'Boom Lift',docType:'Operation Manual',model:'ทุกรุ่น',priority:'เร่งด่วน',content:"## กฎเหล็ก 5 ข้อ\n1. สวม Full Body Harness ตลอดเวลา\n2. ยึด Lanyard กับ Anchor Point\n3. ห้ามปีนราวกันตก\n4. ห้ามใช้ลมเกิน 45 km/h\n5. ห้ามขับขณะบูมยกสูง\n\n## PPE\n- หมวกนิรภัย\n- Full Body Harness + Lanyard\n- รองเท้านิรภัย\n\n⚠️ คำเตือน: ไม่สวม Harness = ฝ่าฝืนกฎร้ายแรง",createdAt:'2025-01-05',updatedAt:'2025-02-14',author:'หัวหน้าช่าง'},
-{id:'b-sv-1',name:'เปลี่ยนซีลกระบอกสูบ Boom Cylinder',equipType:'Boom Lift',docType:'Service Manual',model:'JLG 450AJ / 600AJ',priority:'สำคัญ',content:"## เครื่องมือ\n- Seal Kit ตาม Part Number\n- ประแจ 17 19 24 32mm\n- ถาดรอง จารบีซิลิโคน\n\n## ขั้นตอน\n1. ลดบูมลงต่ำสุด\n2. ดับเครื่อง ปลดแรงดัน\n3. ถ่ายรูปสายท่อก่อนถอด\n4. ถอดกระบอกสูบ\n5. ถอดซีลเก่า ทำความสะอาด\n6. ใส่ซีลใหม่ ทาจารบี\n7. ประกอบกลับ\n\n⚠️ คำเตือน: ห้ามให้สิ่งสกปรกเข้าระบบ\n✅ เคล็ดลับ: ถ่ายรูปทุกขั้นตอน",createdAt:'2025-01-15',updatedAt:'2025-02-12',author:'หัวหน้าช่าง'},
-{id:'b-sv-2',name:'เปลี่ยนน้ำมันเครื่อง Deutz Engine',equipType:'Boom Lift',docType:'Service Manual',model:'JLG 450AJ (Deutz)',priority:'ปกติ',content:"## วัสดุ\n- น้ำมัน 15W-40 CI-4 x 7 ลิตร\n- ไส้กรองน้ำมันเครื่อง\n\n## ขั้นตอน\n1. วอร์มเครื่อง 5 นาที ดับ\n2. ถ่ายน้ำมันเก่า\n3. เปลี่ยนไส้กรอง\n4. เติมน้ำมันใหม่\n5. สตาร์ท ตรวจระดับ\n\n✅ เคล็ดลับ: เปลี่ยนทุก 250 ชม.",createdAt:'2025-02-05',updatedAt:'2025-02-13',author:'หัวหน้าช่าง'},
-{id:'b-pt-1',name:'อะไหล่สิ้นเปลือง Boom Lift',equipType:'Boom Lift',docType:'Part Manual',model:'JLG 450AJ',priority:'ปกติ',content:"## Filters\n- Engine Oil: #7020403 (250ชม.)\n- Fuel: #7024037 (500ชม.)\n- Hydraulic: #1001166539 (500ชม.)\n- Air Primary: #1001125431\n\n## ซีล\n- Boom Cyl Seal Kit: #8000188\n- Swing Bearing Seal: #4140615\n\n## ไฟฟ้า\n- Battery 12V: #8036509\n- Glow Plug: #7030486\n\n✅ เคล็ดลับ: สั่ง Filter Kit รวมประหยัดกว่า",createdAt:'2025-01-25',updatedAt:'2025-02-10',author:'หัวหน้าช่าง'},
-{id:'s-op-1',name:'Scissor Lift Pre-Operation Inspection',equipType:'Scissor Lift',docType:'Operation Manual',model:'JLG 3246ES / 4045R',priority:'เร่งด่วน',content:"## ก่อนใช้งาน\n- ตรวจน้ำกลั่นแบตทุกเซลล์\n- ตรวจขั้วแบต\n- ตรวจยาง + Caster\n- ตรวจ Pothole Protection\n- ตรวจราวกันตก\n\n## Function Test\n- E-Stop บน+ล่าง\n- ยก-ลด\n- Drive & Steer\n- Horn Tilt Sensor\n\n⚠️ คำเตือน: ใช้บนพื้นราบ ลาดชันไม่เกิน 3°\n✅ เคล็ดลับ: ชาร์จแบตหลังใช้งานทุกวัน",createdAt:'2025-02-02',updatedAt:'2025-02-14',author:'หัวหน้าช่าง'},
-{id:'s-sv-1',name:'บำรุงรักษาแบตเตอรี่ Fronius',equipType:'Scissor Lift',docType:'Service Manual',model:'JLG 3246ES + Fronius',priority:'สำคัญ',content:"## ตรวจแบต (ทุกสัปดาห์)\n- น้ำกลั่นเหนือเพลท 10-15mm\n- SG เต็ม 1.275-1.285\n- แรงดัน 6V Cell 6.2-6.4V\n\n## ชาร์จ Fronius\n1. ปิดสวิตช์\n2. ต่อปลั๊กชาร์จ\n3. เปิดชาร์จเจอร์\n4. ชาร์จจนเต็ม\n\n⚠️ คำเตือน: ห้ามชาร์จที่อับอากาศ\n✅ เคล็ดลับ: Equalizing Charge ทุก 5-10 รอบ",createdAt:'2025-01-20',updatedAt:'2025-02-11',author:'หัวหน้าช่าง'},
-{id:'s-pt-1',name:'อะไหล่สิ้นเปลือง Scissor Lift',equipType:'Scissor Lift',docType:'Part Manual',model:'JLG 3246ES',priority:'ปกติ',content:"## แบตเตอรี่\n- Battery 6V Deep Cycle x4\n- Charger Fuse\n\n## ไส้กรอง\n- Hydraulic: #1001112455\n\n## Wear Parts\n- Slide Block Wear Pad\n- Pivot Bushing\n- Tire Non-marking 15x5\n\n✅ เคล็ดลับ: ยาง Non-marking สำหรับ Indoor",createdAt:'2025-01-28',updatedAt:'2025-02-09',author:'หัวหน้าช่าง'},
-{id:'sc-1',name:'Electrical Schematic - JLG 450AJ',equipType:'Boom Lift',docType:'Schematic',model:'JLG 450AJ',priority:'สำคัญ',content:"## ระบบไฟฟ้า 12V\n- Battery → Disconnect → Fuse Panel\n- ECM ควบคุม Deutz Engine\n\n## วงจร\n1. Starting: Battery → Key → Starter\n2. Charging: Alternator → Battery\n3. Control: Controller → Valves\n4. Safety: E-Stop → Tilt → Interlock\n\n## สีสายไฟ\n- แดง +12V ดำ GND\n- ส้ม Ignition ขาว Signal\n\n⚠️ คำเตือน: ปลด Disconnect ก่อนซ่อมไฟฟ้า",createdAt:'2025-01-10',updatedAt:'2025-02-14',author:'หัวหน้าช่าง'},
-{id:'sc-2',name:'Hydraulic Schematic - JLG 450AJ',equipType:'Boom Lift',docType:'Schematic',model:'JLG 450AJ',priority:'สำคัญ',content:"## ภาพรวม\n- Gear Pump ขับโดย Engine\n- Main Control Valve\n- Tank ~75L\n\n## แรงดัน\n- Main Relief 3000 PSI\n- Boom 2800 PSI\n- Steer 1500 PSI\n\n## น้ำมัน AW46\n- เปลี่ยนทุก 1000 ชม.\n\n⚠️ คำเตือน: ห้ามแตะสายขณะมีแรงดัน",createdAt:'2025-01-12',updatedAt:'2025-02-14',author:'หัวหน้าช่าง'},
-{id:'sc-3',name:'Electrical Schematic - Scissor 3246ES',equipType:'Scissor Lift',docType:'Schematic',model:'JLG 3246ES',priority:'สำคัญ',content:"## ระบบ 24V DC\n- 4x6V Battery = 24V\n- Contactor → Controller\n\n## วงจร\n1. Power: Battery → Contactor\n2. Lift: Controller → Pump Motor\n3. Drive: Controller → Drive Motor\n4. Safety: E-Stop → Tilt → Gate\n\n## Sensor\n- Tilt ใต้ Platform\n- Gate Switch ที่ประตู\n- Pothole Guard ขาค้ำ 4 จุด\n\n⚠️ คำเตือน: 24V กระแสสูง ปลด Plug ก่อนซ่อม\n✅ เคล็ดลับ: ตรวจ Gate Switch + Tilt Sensor ก่อน",createdAt:'2025-01-18',updatedAt:'2025-02-12',author:'หัวหน้าช่าง'}
-];
-
-var D=[],FT={eq:null,dt:null,chip:'all'},eid=null;
-function initData(){var s=localStorage.getItem(SK);D=s?JSON.parse(s):SAM.slice();if(!s)sv();render();}
-function sv(){localStorage.setItem(SK,JSON.stringify(D));}
-function render(){renderSB();renderSt();renderCards();}
-
-function renderSB(){
-var t={};D.forEach(function(m){if(!t[m.equipType])t[m.equipType]={};if(!t[m.equipType][m.docType])t[m.equipType][m.docType]=[];t[m.equipType][m.docType].push(m);});
-var sb=document.getElementById('sb');
-var eo=['Boom Lift','Scissor Lift'],doo=['Operation Manual','Part Manual','Service Manual','Schematic'];
-var ei={'Boom Lift':'🏗️','Scissor Lift':'✂️'},ec={'Boom Lift':'boom','Scissor Lift':'scissor'};
-var di={'Operation Manual':'📖','Part Manual':'🔩','Service Manual':'🛠️','Schematic':'📐'};
-var h='<div class="sb-d">EQUIPMENT TYPE</div>';
-h+='<div class="sb-s op"><div class="sb-h" onclick="flt(null,null)"><div class="sb-hl"><div class="sb-i boom">📚</div><div class="sb-t">ทั้งหมด</div></div><span class="sb-c">'+D.length+'</span></div></div>';
-eo.forEach(function(eq){if(!t[eq])return;var c=D.filter(function(m){return m.equipType===eq;}).length;var op=FT.eq===eq;
-h+='<div class="sb-s '+(op?'op':'')+'"><div class="sb-h" onclick="this.parentElement.classList.toggle(\'op\')"><div class="sb-hl"><div class="sb-i '+ec[eq]+'">'+ei[eq]+'</div><div class="sb-t">'+eq+'<small>'+c+' คู่มือ</small></div></div><span class="sb-a">▼</span></div><div class="sb-is">';
-doo.forEach(function(dt){if(!t[eq]||!t[eq][dt])return;var n=t[eq][dt].length;var a=FT.eq===eq&&FT.dt===dt;
-h+='<div class="sb-it '+(a?'on':'')+'" onclick="flt(\''+eq+'\',\''+dt+'\')">'+di[dt]+' '+dt+'<span class="sb-b">'+n+'</span></div>';});
-h+='<div class="sb-it '+(FT.eq===eq&&!FT.dt?'on':'')+'" onclick="flt(\''+eq+'\',null)" style="border-top:1px solid var(--bd);color:var(--o);font-weight:700">📋 ทั้งหมด<span class="sb-b">'+c+'</span></div></div></div>';});
-var sc=D.filter(function(m){return m.docType==='Schematic';}).length;
-if(sc)h+='<div class="sb-d">SCHEMATIC</div><div class="sb-s op"><div class="sb-h" onclick="flt(null,\'Schematic\')"><div class="sb-hl"><div class="sb-i sch">📐</div><div class="sb-t">Schematic ทั้งหมด</div></div><span class="sb-c">'+sc+'</span></div></div>';
-sb.innerHTML=h;
-}
-function flt(eq,dt){FT.eq=eq;FT.dt=dt;FT.chip='all';document.querySelectorAll('.ch').forEach(function(c){c.classList.remove('on');});document.querySelector('.ch').classList.add('on');closeDP();render();}
-function setCh(v,el){FT.chip=v;document.querySelectorAll('.ch').forEach(function(c){c.classList.remove('on');});el.classList.add('on');renderCards();}
-function getL(){var l=D.slice();var s=document.getElementById('q').value.toLowerCase();if(FT.eq)l=l.filter(function(m){return m.equipType===FT.eq;});if(FT.dt)l=l.filter(function(m){return m.docType===FT.dt;});if(FT.chip!=='all')l=l.filter(function(m){return m.docType===FT.chip;});if(s)l=l.filter(function(m){return m.name.toLowerCase().indexOf(s)>=0||m.content.toLowerCase().indexOf(s)>=0||(m.model&&m.model.toLowerCase().indexOf(s)>=0);});return l;}
-function renderSt(){var b=D.filter(function(m){return m.equipType==='Boom Lift';}).length;var s=D.filter(function(m){return m.equipType==='Scissor Lift';}).length;var sc=D.filter(function(m){return m.docType==='Schematic';}).length;document.getElementById('sts').innerHTML='<div class="stb"><div class="stn">'+D.length+'</div><div class="stl">คู่มือทั้งหมด</div></div><div class="stb"><div class="stn">'+b+'</div><div class="stl">Boom Lift</div></div><div class="stb"><div class="stn">'+s+'</div><div class="stl">Scissor Lift</div></div><div class="stb"><div class="stn">'+sc+'</div><div class="stl">Schematic</div></div>';}
-function renderCards(){
-var l=getL(),g=document.getElementById('gr'),ct=document.getElementById('ct'),bc=document.getElementById('bc');
-var tt='คู่มือ<span class="hl">ทั้งหมด</span>',b='';
-if(FT.eq&&FT.dt){tt='<span class="hl">'+FT.eq+'</span> › '+FT.dt;b='หน้าแรก › '+FT.eq+' › <span>'+FT.dt+'</span>';}
-else if(FT.eq){tt='<span class="hl">'+FT.eq+'</span>';b='หน้าแรก › <span>'+FT.eq+'</span>';}
-else if(FT.dt){tt='<span class="hl">'+FT.dt+'</span>';b='หน้าแรก › <span>'+FT.dt+'</span>';}
-ct.innerHTML=tt;bc.innerHTML=b;
-if(!l.length){g.innerHTML='<div class="emp"><p style="font-size:48px;opacity:.4">📭</p><p>ไม่พบคู่มือ</p></div>';return;}
-var tc={'Operation Manual':'tg-op','Part Manual':'tg-pt','Service Manual':'tg-sv','Schematic':'tg-sc'};
-var pc={'เร่งด่วน':'u','สำคัญ':'i','ปกติ':'n'};
-g.innerHTML=l.map(function(m){return '<div class="cd" onclick="openD(\''+m.id+'\')"><div class="cd-top"><h3>'+m.name+'</h3><span class="tg '+(tc[m.docType]||'')+'">'+m.docType+'</span></div><div class="cd-d">'+m.content.replace(/##/g,'').replace(/[⚠️✅]/g,'').substring(0,100)+'...</div><div class="cd-m"><span><span class="pd '+(pc[m.priority]||'')+'"></span> '+m.priority+'</span><span>🏭 '+(m.model||'-')+'</span><span>📅 '+m.updatedAt+'</span></div></div>';}).join('');
+// ===== FILE EXPLORER =====
+function loadFolder(folderId){
+  if(!GAS){document.getElementById('content').innerHTML='<div class="empty-state"><div class="ei">⚙️</div><p>กรุณาตั้งค่า API URL ก่อน (Admin เท่านั้น)</p></div>';renderBcr();return;}
+  document.getElementById('content').innerHTML='<div class="loading"><div class="spinner"></div><br>กำลังโหลด...</div>';
+  renderBcr();
+  fetch(GAS,{method:'POST',body:JSON.stringify({action:'list',folderId:folderId})})
+  .then(function(r){return r.json();})
+  .then(function(res){
+    if(res.success){renderExplorer(res.data);}
+    else{document.getElementById('content').innerHTML='<div class="empty-state"><div class="ei">❌</div><p>โหลดไม่สำเร็จ: '+(res.error||'')+'</p></div>';}
+  })
+  .catch(function(err){document.getElementById('content').innerHTML='<div class="empty-state"><div class="ei">🔌</div><p>เชื่อมต่อ API ไม่ได้<br><small>ตรวจสอบ URL และ Deploy ใหม่</small></p></div>';});
 }
 
-// ===== DETAIL =====
-function openD(id){
-var m=null;for(var i=0;i<D.length;i++){if(D[i].id===id){m=D[i];break;}}
-if(!m)return;
-document.getElementById('lv').style.display='none';
-document.getElementById('sts').style.display='none';
-var dp=document.getElementById('dp');dp.classList.add('show');
-var tc={'Operation Manual':'tg-op','Part Manual':'tg-pt','Service Manual':'tg-sv','Schematic':'tg-sc'};
-var isAdm=curUser&&curUser.role==='admin';
-var acts='';
-if(isAdm)acts='<button class="btn bo bs" onclick="editM(\''+m.id+'\')">✏️ แก้ไข</button><button class="btn bd bs" onclick="delM(\''+m.id+'\')">🗑️ ลบ</button>';
-acts+='<button class="btn bg bs" onclick="window.print()">🖨️ พิมพ์</button>';
-var pdfHtml=buildPdfSection(m);
-dp.innerHTML='<div class="dp-bk" onclick="closeDP()">◂ กลับรายการ</div><div class="dp-hd"><h1>'+m.name+'</h1><div class="dp-if"><span class="tg '+tc[m.docType]+'">'+m.docType+'</span><span>🏗️ '+m.equipType+'</span><span>🏭 '+(m.model||'-')+'</span><span>📅 '+m.updatedAt+'</span></div></div><div class="dp-ac">'+acts+'</div><div class="dp-bd">'+prs(m.content)+pdfHtml+'</div>';
+function renderBcr(){
+  var bc=document.getElementById('bcr');
+  var h='';
+  for(var i=0;i<navStack.length;i++){
+    if(i>0)h+='<span class="sep">›</span> ';
+    if(i<navStack.length-1){
+      h+='<span onclick="goBack('+i+')">'+navStack[i].name+'</span>';
+    }else{
+      h+='<strong style="color:var(--tx)">'+navStack[i].name+'</strong>';
+    }
+  }
+  bc.innerHTML=h;
 }
-function closeDP(){document.getElementById('dp').classList.remove('show');document.getElementById('lv').style.display='block';document.getElementById('sts').style.display='grid';}
-function prs(t){return t.replace(/## (.+)/g,'<h4>$1</h4>').replace(/⚠️ คำเตือน: (.+)/g,'<div class="wb">⚠️ $1</div>').replace(/✅ เคล็ดลับ: (.+)/g,'<div class="tb">✅ $1</div>').replace(/^(\d+)\. (.+)$/gm,'<li>$2</li>').replace(/^- (.+)$/gm,'<li>$1</li>').replace(/((<li>.*<\/li>\s*)+)/g,'<ul>$1</ul>').replace(/\n\n/g,'<br>').replace(/\n/g,'');}
 
-// ===== PDF =====
-function buildPdfSection(m){
-var isAdm=curUser&&curUser.role==='admin';
-var h='<div class="pdf-sec"><h4>📎 ไฟล์ PDF แนบ</h4>';
-if(m.pdfs&&m.pdfs.length>0){
-m.pdfs.forEach(function(p){
-h+='<div class="pdf-item"><span class="pfi">📄</span><span class="pfn">'+p.fileName+'</span><span class="pfd">'+p.uploadedAt+'</span><div>';
-h+='<button class="pfb pfb-v" onclick="event.stopPropagation();openPV(\''+p.viewUrl+'\',\''+p.fileName.replace(/'/g,'')+'\')">👁️ ดู</button> ';
-if(isAdm)h+='<button class="pfb pfb-d" onclick="event.stopPropagation();delPdf(\''+m.id+'\',\''+p.fileId+'\')">🗑️</button>';
-h+='</div></div>';
-});
-}else{h+='<p style="color:var(--gl);font-size:13px;margin-top:8px">ยังไม่มีไฟล์ PDF</p>';}
-if(isAdm){
-h+='<div class="uz" onclick="upPdf(\''+m.id+'\')"><div class="uz-i">📤</div><div class="uz-t">คลิกเพื่อ <strong>อัปโหลด PDF</strong></div></div>';
-h+='<div class="uprog" id="up-'+m.id+'"><div class="ubar"></div></div>';
+function goBack(idx){
+  navStack=navStack.slice(0,idx+1);
+  loadFolder(navStack[idx].id);
 }
-h+='</div>';
-return h;
+
+function openFolder(id,name){
+  navStack.push({id:id,name:name});
+  loadFolder(id);
 }
-function upPdf(mid){
-if(!GAS_URL){toast('ตั้งค่า API URL ก่อน','err');return;}
-var inp=document.getElementById('pdfIn');
-inp.onchange=function(ev){
-var file=ev.target.files[0];if(!file)return;
-if(file.type!=='application/pdf'){toast('เฉพาะ PDF','err');return;}
-var reader=new FileReader();
-reader.onload=function(e){
-var b64=e.target.result.split(',')[1];
-var pg=document.getElementById('up-'+mid);
-if(pg){pg.style.display='block';pg.querySelector('.ubar').style.width='40%';}
-fetch(GAS_URL,{method:'POST',body:JSON.stringify({action:'upload',fileName:file.name,mimeType:'application/pdf',fileBase64:b64})})
-.then(function(r){return r.json();})
-.then(function(data){
-if(pg)pg.querySelector('.ubar').style.width='100%';
-if(data.success){
-var m=null;for(var i=0;i<D.length;i++){if(D[i].id===mid){m=D[i];break;}}
-if(m){if(!m.pdfs)m.pdfs=[];m.pdfs.push({fileId:data.fileId,fileName:data.fileName,viewUrl:data.viewUrl,uploadedAt:new Date().toISOString().split('T')[0]});sv();}
-toast('อัปโหลด PDF สำเร็จ ✅');
-setTimeout(function(){openD(mid);},500);
-}else{toast('ล้มเหลว: '+(data.error||''),'err');}
-if(pg)setTimeout(function(){pg.style.display='none';pg.querySelector('.ubar').style.width='0';},1000);
-}).catch(function(){toast('เชื่อมต่อ API ไม่ได้','err');if(pg)pg.style.display='none';});
-};
-reader.readAsDataURL(file);
-inp.value='';
-};
-inp.click();
+
+function renderExplorer(data){
+  var c=document.getElementById('content');
+  if(data.folders.length===0&&data.files.length===0){
+    c.innerHTML='<div class="empty-state"><div class="ei">📭</div><p>โฟลเดอร์ว่าง</p></div>';
+    return;
+  }
+  var isAdm=curUser&&curUser.role==='admin';
+  var h='<div class="file-grid">';
+
+  // Folders
+  data.folders.forEach(function(f){
+    h+='<div class="file-card" onclick="openFolder(\''+f.id+'\',\''+f.name.replace(/'/g,'')+'\')">';
+    h+='<span class="ficon">📁</span>';
+    h+='<div class="fname">'+f.name+'</div>';
+    h+='<div class="fmeta">โฟลเดอร์</div>';
+    h+='</div>';
+  });
+
+  // Files
+  data.files.forEach(function(f){
+    var icon=getFileIcon(f.ext,f.mimeType);
+    var size=formatSize(f.size);
+    h+='<div class="file-card" onclick="openFile(\''+f.id+'\',\''+f.name.replace(/'/g,'')+'\',\''+f.viewUrl+'\',\''+f.ext+'\')">';
+    if(isAdm)h+='<button class="fdel" onclick="event.stopPropagation();delFile(\''+f.id+'\')">✕</button>';
+    h+='<span class="ficon">'+icon+'</span>';
+    h+='<div class="fname">'+f.name+'</div>';
+    h+='<div class="fmeta">'+size+' · '+f.date+'</div>';
+    h+='</div>';
+  });
+
+  h+='</div>';
+  c.innerHTML=h;
 }
-function delPdf(mid,fid){
-if(!confirm('ลบ PDF นี้?'))return;
-if(GAS_URL){fetch(GAS_URL,{method:'POST',body:JSON.stringify({action:'delete',fileId:fid})}).catch(function(){});}
-var m=null;for(var i=0;i<D.length;i++){if(D[i].id===mid){m=D[i];break;}}
-if(m&&m.pdfs){m.pdfs=m.pdfs.filter(function(p){return p.fileId!==fid;});sv();openD(mid);toast('ลบ PDF แล้ว');}
+
+function getFileIcon(ext,mime){
+  if(ext==='pdf')return '📕';
+  if(ext==='doc'||ext==='docx')return '📘';
+  if(ext==='xls'||ext==='xlsx')return '📗';
+  if(ext==='ppt'||ext==='pptx')return '📙';
+  if(ext==='jpg'||ext==='jpeg'||ext==='png'||ext==='gif'||ext==='webp')return '🖼️';
+  if(ext==='zip'||ext==='rar'||ext==='7z')return '📦';
+  if(ext==='mp4'||ext==='avi'||ext==='mov')return '🎬';
+  if(mime&&mime.indexOf('image')>=0)return '🖼️';
+  return '📄';
 }
-function openPV(url,name){document.getElementById('pvwT').textContent=name;document.getElementById('pvwF').src=url;document.getElementById('pvw').classList.add('open');}
+
+function formatSize(bytes){
+  if(bytes<1024)return bytes+' B';
+  if(bytes<1048576)return (bytes/1024).toFixed(1)+' KB';
+  return (bytes/1048576).toFixed(1)+' MB';
+}
+
+function openFile(id,name,viewUrl,ext){
+  if(ext==='pdf'||ext==='jpg'||ext==='jpeg'||ext==='png'||ext==='gif'){
+    document.getElementById('pvwT').textContent=name;
+    document.getElementById('pvwF').src=viewUrl;
+    document.getElementById('pvw').classList.add('open');
+  }else{
+    window.open(viewUrl,'_blank');
+  }
+}
 function closePV(){document.getElementById('pvw').classList.remove('open');document.getElementById('pvwF').src='';}
 
-// ===== CRUD =====
-function openM(id){if(curUser&&curUser.role!=='admin')return;eid=id||null;var m=null;if(id){for(var i=0;i<D.length;i++){if(D[i].id===id){m=D[i];break;}}}document.getElementById('mtt').textContent=m?'✏️ แก้ไขคู่มือ':'🔧 เพิ่มคู่มือใหม่';document.getElementById('fN').value=m?m.name:'';document.getElementById('fE').value=m?m.equipType:'';document.getElementById('fD').value=m?m.docType:'';document.getElementById('fM').value=m?(m.model||''):'';document.getElementById('fP').value=m?m.priority:'ปกติ';document.getElementById('fC').value=m?m.content:'';document.getElementById('mbg').classList.add('open');}
-function closeM(){document.getElementById('mbg').classList.remove('open');}
-function editM(id){openM(id);}
-function saveM(){if(curUser&&curUser.role!=='admin')return;var n=document.getElementById('fN').value.trim(),e=document.getElementById('fE').value,d=document.getElementById('fD').value,mo=document.getElementById('fM').value.trim(),p=document.getElementById('fP').value,c=document.getElementById('fC').value.trim();if(!n||!e||!d||!c){toast('กรุณากรอกให้ครบ','err');return;}var td=new Date().toISOString().split('T')[0];if(eid){for(var i=0;i<D.length;i++){if(D[i].id===eid){D[i].name=n;D[i].equipType=e;D[i].docType=d;D[i].model=mo;D[i].priority=p;D[i].content=c;D[i].updatedAt=td;break;}}toast('อัปเดตเรียบร้อย ✅');}else{D.unshift({id:Date.now().toString(),name:n,equipType:e,docType:d,model:mo,priority:p,content:c,createdAt:td,updatedAt:td,author:curUser.name,pdfs:[]});toast('เพิ่มคู่มือใหม่ ✅');}sv();closeM();closeDP();render();}
-function delM(id){if(!confirm('ลบคู่มือนี้?'))return;D=D.filter(function(m){return m.id!==id;});sv();closeDP();render();toast('ลบเรียบร้อย');}
+// ===== UPLOAD =====
+function pickFile(){
+  if(!GAS){toast('ตั้งค่า API URL ก่อน','err');return;}
+  var inp=document.getElementById('fIn');
+  inp.onchange=function(ev){
+    var file=ev.target.files[0];if(!file)return;
+    if(file.size>50*1024*1024){toast('ไฟล์ใหญ่เกิน 50MB','err');return;}
+    toast('กำลังอัปโหลด '+file.name+'...');
+    var reader=new FileReader();
+    reader.onload=function(e){
+      var b64=e.target.result.split(',')[1];
+      var curFolderId=navStack[navStack.length-1].id;
+      fetch(GAS,{method:'POST',body:JSON.stringify({action:'upload',folderId:curFolderId,fileName:file.name,mimeType:file.type||'application/octet-stream',fileBase64:b64})})
+      .then(function(r){return r.json();})
+      .then(function(data){
+        if(data.success){toast('อัปโหลด '+data.fileName+' สำเร็จ ✅');loadFolder(curFolderId);}
+        else{toast('ล้มเหลว: '+(data.error||''),'err');}
+      })
+      .catch(function(){toast('เชื่อมต่อ API ไม่ได้','err');});
+    };
+    reader.readAsDataURL(file);
+    inp.value='';
+  };
+  inp.click();
+}
+
+function newFolder(){
+  if(!GAS){toast('ตั้งค่า API URL ก่อน','err');return;}
+  var name=prompt('ชื่อโฟลเดอร์ใหม่:');
+  if(!name||!name.trim())return;
+  var curFolderId=navStack[navStack.length-1].id;
+  toast('กำลังสร้างโฟลเดอร์...');
+  fetch(GAS,{method:'POST',body:JSON.stringify({action:'createFolder',folderId:curFolderId,folderName:name.trim()})})
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data.success){toast('สร้างโฟลเดอร์ '+data.folderName+' สำเร็จ ✅');loadFolder(curFolderId);}
+    else{toast('ล้มเหลว','err');}
+  })
+  .catch(function(){toast('เชื่อมต่อไม่ได้','err');});
+}
+
+function delFile(fid){
+  if(!confirm('ลบไฟล์นี้?'))return;
+  var curFolderId=navStack[navStack.length-1].id;
+  fetch(GAS,{method:'POST',body:JSON.stringify({action:'delete',fileId:fid})})
+  .then(function(r){return r.json();})
+  .then(function(data){if(data.success){toast('ลบแล้ว');loadFolder(curFolderId);}})
+  .catch(function(){toast('ลบไม่สำเร็จ','err');});
+}
+
 function toast(m,t){var e=document.getElementById('tt');e.textContent=m;e.className='tst '+(t||'ok')+' show';setTimeout(function(){e.classList.remove('show');},3000);}
 
-// ===== START =====
 checkSession();
 </script>
 </body>
