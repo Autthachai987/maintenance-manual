@@ -7,162 +7,150 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Kanit:wght@400;600;700;800;900&family=Oswald:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--o:#F26522;--ol:#FF7D3B;--od:#D4520F;--bk:#FAFAFA;--wh:#FFFFFF;--g1:#F0F0F0;--g2:#E5E5E5;--g3:#CCC;--g4:#999;--g5:#666;--g6:#333;--dk:#1A1A1A;--ok:#4CAF50;--dg:#E53935;--inf:#1976D2;--og:rgba(242,101,34,0.08);--shadow:0 2px 12px rgba(0,0,0,0.08);--shadow2:0 4px 24px rgba(0,0,0,0.12)}
+:root{--o:#F26522;--ol:#FF7D3B;--od:#D4520F;--bk:#F5F5F5;--wh:#FFF;--g1:#F0F0F0;--g2:#E0E0E0;--g3:#CCC;--g4:#999;--g5:#666;--g6:#333;--dk:#1A1A1A;--ok:#43A047;--dg:#E53935;--inf:#1976D2;--og:rgba(242,101,34,0.07);--sh:0 1px 8px rgba(0,0,0,0.07);--sh2:0 4px 20px rgba(0,0,0,0.1)}
 body{font-family:'Sarabun',sans-serif;background:var(--bk);color:var(--g6);min-height:100vh}
 
 /* LOGIN */
-.login-ov{position:fixed;inset:0;background:var(--dk);z-index:9999;display:flex;align-items:center;justify-content:center}
-.login-ov.hid{display:none}
-.login-split{display:flex;width:90%;max-width:900px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow2)}
-.login-left{flex:1;background:linear-gradient(135deg,var(--o) 0%,#E8520D 100%);padding:48px 40px;display:flex;flex-direction:column;justify-content:center;color:#fff}
-.login-left h1{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;text-transform:uppercase;line-height:1.1;margin-bottom:12px}
-.login-left p{font-size:15px;opacity:.85;line-height:1.6}
-.login-left .ll-badge{margin-top:32px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.15);padding:10px 18px;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;backdrop-filter:blur(4px)}
-.login-right{flex:1;background:var(--wh);padding:48px 40px;display:flex;flex-direction:column;justify-content:center}
-.login-right h2{font-family:'Kanit',sans-serif;font-size:22px;font-weight:800;color:var(--g6);margin-bottom:6px}
-.login-right .lsub{font-size:13px;color:var(--g4);margin-bottom:28px}
-.lfg{margin-bottom:18px}
-.lfg label{display:block;font-size:12px;font-weight:700;color:var(--g5);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px}
-.lfg input{width:100%;padding:12px 14px;background:var(--g1);border:2px solid transparent;border-radius:8px;font-size:15px;color:var(--g6);outline:none;font-family:'Sarabun',sans-serif;transition:border-color .2s}
-.lfg input:focus{border-color:var(--o);background:var(--wh)}
-.lerr{color:var(--dg);font-size:13px;font-weight:700;margin-bottom:10px;min-height:18px}
-.lrem{display:flex;align-items:center;gap:8px;margin-bottom:18px}
-.lrem input{accent-color:var(--o);width:16px;height:16px}
-.lrem label{font-size:13px;color:var(--g5);cursor:pointer}
-.lbtn{width:100%;padding:14px;background:var(--o);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;text-transform:uppercase;letter-spacing:1px}
-.lbtn:hover{background:var(--od);transform:translateY(-1px);box-shadow:0 4px 16px rgba(242,101,34,0.3)}
+.lov{position:fixed;inset:0;background:var(--dk);z-index:9999;display:flex;align-items:center;justify-content:center}.lov.hid{display:none}
+.lsp{display:flex;width:92%;max-width:880px;border-radius:16px;overflow:hidden;box-shadow:var(--sh2)}
+.lL{flex:1;background:linear-gradient(135deg,var(--o),#E8520D);padding:48px 36px;display:flex;flex-direction:column;justify-content:center;color:#fff}
+.lL h1{font-family:'Oswald',sans-serif;font-size:40px;font-weight:700;text-transform:uppercase;line-height:1.1;margin-bottom:12px}
+.lL p{font-size:14px;opacity:.85;line-height:1.6}
+.lL .llb{margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.15);padding:10px 16px;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px}
+.lR{flex:1;background:var(--wh);padding:44px 36px;display:flex;flex-direction:column;justify-content:center}
+.lR h2{font-family:'Kanit',sans-serif;font-size:20px;font-weight:800;margin-bottom:4px}
+.lR .ls{font-size:13px;color:var(--g4);margin-bottom:24px}
+.fg{margin-bottom:16px}.fg label{display:block;font-size:11px;font-weight:700;color:var(--g5);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.fg input{width:100%;padding:11px 14px;background:var(--g1);border:2px solid transparent;border-radius:8px;font-size:14px;color:var(--g6);outline:none;font-family:'Sarabun',sans-serif}.fg input:focus{border-color:var(--o);background:var(--wh)}
+.le{color:var(--dg);font-size:13px;font-weight:700;margin-bottom:8px;min-height:18px}
+.lrm{display:flex;align-items:center;gap:8px;margin-bottom:16px}.lrm input{accent-color:var(--o);width:15px;height:15px}.lrm label{font-size:13px;color:var(--g5);cursor:pointer}
+.lbt{width:100%;padding:13px;background:var(--o);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Sarabun',sans-serif;text-transform:uppercase;letter-spacing:1px}.lbt:hover{background:var(--od)}
 
 /* APP */
-.app{display:none}.app.show{display:block}
-
-/* HEADER - JLG Style */
-.hdr{background:var(--wh);border-bottom:3px solid var(--o);box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
-.hdr-m{display:flex;align-items:center;justify-content:space-between;padding:0 28px;max-width:1400px;margin:0 auto;height:64px}
-.hdr-logo{display:flex;align-items:center;gap:14px}
-.hdr-logo-box{width:48px;height:48px;background:var(--o);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;letter-spacing:1px}
-.hdr-logo h1{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:var(--g6);text-transform:uppercase;line-height:1.2}
+.app{display:none}.app.show{display:flex;flex-direction:column;min-height:100vh}
+/* HEADER */
+.hdr{background:var(--wh);border-bottom:3px solid var(--o);box-shadow:var(--sh);position:sticky;top:0;z-index:100}
+.hdr-m{display:flex;align-items:center;justify-content:space-between;padding:0 24px;max-width:1600px;margin:0 auto;height:58px}
+.hdr-logo{display:flex;align-items:center;gap:12px}
+.hdr-lb{width:44px;height:44px;background:var(--o);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff}
+.hdr-logo h1{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--g6);text-transform:uppercase;line-height:1.15}
 .hdr-logo h1 span{color:var(--o)}
-.hdr-logo small{font-family:'Sarabun',sans-serif;font-size:10px;color:var(--g4);font-weight:400;text-transform:uppercase;letter-spacing:2px;display:block}
-.hdr-nav{display:flex;align-items:center;gap:16px}
-.hdr-user{display:flex;align-items:center;gap:10px;padding:6px 14px;background:var(--g1);border-radius:24px}
-.hdr-user .av{width:30px;height:30px;background:var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
-.hdr-user .nm{font-size:13px;font-weight:700;color:var(--g6)}.hdr-user .rl{font-size:10px;color:var(--g4)}
-.btn{padding:10px 18px;border:none;border-radius:6px;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
-.bo{background:var(--o);color:#fff}.bo:hover{background:var(--od);box-shadow:0 2px 8px rgba(242,101,34,0.25)}
+.hdr-logo small{font-size:9px;color:var(--g4);text-transform:uppercase;letter-spacing:2px;display:block;font-family:'Sarabun',sans-serif;font-weight:400}
+.hn{display:flex;align-items:center;gap:12px}
+.hu{display:flex;align-items:center;gap:8px;padding:5px 12px;background:var(--g1);border-radius:20px}
+.hu .av{width:28px;height:28px;background:var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff}
+.hu .nm{font-size:12px;font-weight:700}.hu .rl{font-size:9px;color:var(--g4)}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-family:'Sarabun',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.bo{background:var(--o);color:#fff}.bo:hover{background:var(--od)}
 .bg{background:var(--g1);color:var(--g5);border:1px solid var(--g2)}.bg:hover{border-color:var(--o);color:var(--o)}
-.bw{background:var(--wh);color:var(--g5);border:1px solid var(--g2)}.bw:hover{border-color:var(--g3)}
-.bsm{padding:7px 14px;font-size:12px}
 
-/* EXPLORER */
-.ex{max-width:1400px;margin:0 auto;padding:24px 28px}
-.gas-bar{background:var(--wh);border:1px solid var(--g2);border-radius:10px;padding:12px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;box-shadow:var(--shadow)}
-.gas-bar label{font-size:12px;font-weight:800;color:var(--o);text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
-.gas-bar input{flex:1;min-width:200px;padding:8px 12px;background:var(--g1);border:1px solid var(--g2);border-radius:6px;font-size:12px;color:var(--g6);outline:none;font-family:monospace}
-.gas-bar input:focus{border-color:var(--o)}
+/* LAYOUT */
+.layout{display:flex;flex:1;max-width:1600px;margin:0 auto;width:100%}
+/* SIDEBAR */
+.side{width:260px;background:var(--wh);border-right:1px solid var(--g2);flex-shrink:0;overflow-y:auto;position:sticky;top:61px;height:calc(100vh - 61px)}
+.side-hd{padding:16px 18px 10px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--g4);border-bottom:1px solid var(--g1)}
+.scat{border-bottom:1px solid var(--g1)}
+.scat-h{display:flex;align-items:center;gap:10px;padding:12px 18px;cursor:pointer;transition:background .1s;user-select:none}
+.scat-h:hover{background:var(--og)}
+.scat-h .sci{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.sci.boom{background:rgba(242,101,34,0.12)}.sci.scissor{background:rgba(25,118,210,0.1)}.sci.gen{background:rgba(67,160,71,0.1)}.sci.sch{background:rgba(255,167,38,0.1)}.sci.cat{background:rgba(156,39,176,0.08)}
+.scat-h .sct{font-size:13px;font-weight:700;color:var(--g6);flex:1}
+.scat-h .sct small{display:block;font-size:10px;color:var(--g4);font-weight:400}
+.scat-h .sarr{color:var(--g3);font-size:11px;transition:transform .2s}
+.scat.open .sarr{transform:rotate(180deg)}
+.scat-items{display:none;padding:0 0 6px}
+.scat.open .scat-items{display:block}
+.scat-it{padding:8px 18px 8px 60px;font-size:12px;color:var(--g5);cursor:pointer;border-left:3px solid transparent;transition:all .1s}
+.scat-it:hover{background:var(--g1);color:var(--g6);border-left-color:var(--o)}
+.scat-it.on{background:var(--og);color:var(--o);font-weight:700;border-left-color:var(--o)}
 
-/* TOOLBAR */
-.tbar{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
-.bcr{display:flex;align-items:center;gap:4px;flex:1;font-size:14px;flex-wrap:wrap}
+/* MAIN */
+.main{flex:1;padding:20px 24px;min-height:calc(100vh - 61px);overflow-y:auto}
+.gas-bar{background:var(--wh);border:1px solid var(--g2);border-radius:8px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:var(--sh)}
+.gas-bar label{font-size:11px;font-weight:800;color:var(--o);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.gas-bar input{flex:1;min-width:180px;padding:7px 10px;background:var(--g1);border:1px solid var(--g2);border-radius:5px;font-size:11px;color:var(--g6);outline:none;font-family:monospace}.gas-bar input:focus{border-color:var(--o)}
+/* Toolbar */
+.tbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.bcr{display:flex;align-items:center;gap:4px;flex:1;font-size:13px;flex-wrap:wrap}
 .bcr a{color:var(--o);font-weight:600;cursor:pointer;text-decoration:none}.bcr a:hover{text-decoration:underline}
-.bcr .sep{color:var(--g3);font-size:16px}
-.bcr .cur{color:var(--g6);font-weight:800;font-family:'Kanit',sans-serif}
-.search-box{position:relative}
-.search-box input{padding:10px 14px 10px 38px;border:2px solid var(--g2);border-radius:8px;font-size:14px;width:280px;outline:none;background:var(--wh);font-family:'Sarabun',sans-serif;color:var(--g6);transition:border-color .2s}
-.search-box input:focus{border-color:var(--o)}
-.search-box input::placeholder{color:var(--g3)}
-.search-box .si{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--g3);font-size:16px}
+.bcr .sep{color:var(--g3)}.bcr .cur{font-weight:800;color:var(--g6);font-family:'Kanit',sans-serif}
+.sbox{position:relative}
+.sbox input{padding:9px 12px 9px 34px;border:2px solid var(--g2);border-radius:8px;font-size:13px;width:240px;outline:none;background:var(--wh);font-family:'Sarabun',sans-serif;color:var(--g6)}.sbox input:focus{border-color:var(--o)}
+.sbox input::placeholder{color:var(--g3)}
+.sbox .si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--g3)}
 
-/* FILE GRID */
-.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.fcard{background:var(--wh);border:2px solid transparent;border-radius:12px;padding:20px 14px;text-align:center;cursor:pointer;transition:all .15s;position:relative;box-shadow:var(--shadow)}
-.fcard:hover{border-color:var(--o);transform:translateY(-3px);box-shadow:var(--shadow2)}
-.fcard .fic{font-size:48px;margin-bottom:10px;display:block}
-.fcard .fnm{font-size:12px;font-weight:700;color:var(--g6);word-break:break-all;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:32px}
-.fcard .fmeta{font-size:10px;color:var(--g4);margin-top:6px}
-.fcard .fdel{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--dg);color:#fff;border:none;font-size:12px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.2)}
+/* FILE LIST */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.fcard{background:var(--wh);border:2px solid transparent;border-radius:10px;padding:18px 12px 14px;text-align:center;cursor:pointer;transition:all .15s;position:relative;box-shadow:var(--sh)}
+.fcard:hover{border-color:var(--o);transform:translateY(-2px);box-shadow:var(--sh2)}
+.fcard .fic{font-size:44px;margin-bottom:8px;display:block}
+.fcard .fnm{font-size:11px;font-weight:700;color:var(--g6);word-break:break-all;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:28px}
+.fcard .fm{font-size:10px;color:var(--g4);margin-top:4px}
+.fcard .fdel{position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--dg);color:#fff;border:none;font-size:11px;cursor:pointer;display:none;align-items:center;justify-content:center}
 .fcard:hover .fdel{display:flex}
-.fcard .folder-badge{position:absolute;top:8px;left:8px;background:var(--og);color:var(--o);font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px}
-/* Open PDF button on hover */
-.fcard .fopen{display:none;position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:var(--o);color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:11px;font-weight:800;cursor:pointer;font-family:'Sarabun',sans-serif;text-transform:uppercase;letter-spacing:.5px;box-shadow:0 2px 8px rgba(242,101,34,0.3);white-space:nowrap}
-.fcard:hover .fopen{display:block}
-
-/* LOADING */
-.ld{text-align:center;padding:80px;color:var(--g4)}
-.ld .sp{display:inline-block;width:36px;height:36px;border:3px solid var(--g2);border-top-color:var(--o);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:14px}
+.fcard .fob{display:none;position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:var(--o);color:#fff;border:none;border-radius:5px;padding:5px 14px;font-size:10px;font-weight:800;cursor:pointer;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.fcard:hover .fob{display:block}
+.ld{text-align:center;padding:80px;color:var(--g4)}.ld .sp{display:inline-block;width:32px;height:32px;border:3px solid var(--g2);border-top-color:var(--o);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.emp{text-align:center;padding:80px;color:var(--g4)}.emp .ei{font-size:64px;opacity:.3;margin-bottom:14px}
-
+.emp{text-align:center;padding:60px;color:var(--g4)}.emp .ei{font-size:56px;opacity:.3;margin-bottom:10px}
 /* VIEWER */
-.pvw{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:250;align-items:center;justify-content:center;backdrop-filter:blur(4px)}.pvw.open{display:flex}
-.pvw-box{width:95%;max-width:1100px;height:92vh;background:var(--wh);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow2)}
-.pvw-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:2px solid var(--g2);background:var(--g1)}
-.pvw-hd h3{font-family:'Kanit',sans-serif;font-size:15px;color:var(--g6);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pvw{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:250;align-items:center;justify-content:center;backdrop-filter:blur(3px)}.pvw.open{display:flex}
+.pvw-bx{width:95%;max-width:1100px;height:92vh;background:var(--wh);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sh2)}
+.pvw-hd{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:2px solid var(--g2);background:var(--g1)}
+.pvw-hd h3{font-family:'Kanit',sans-serif;font-size:14px;color:var(--g6);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:12px}
 .pvw-bd{flex:1;background:#525659}.pvw-bd iframe{width:100%;height:100%;border:none}
-
-.tst{position:fixed;bottom:24px;right:24px;padding:14px 24px;border-radius:8px;font-weight:700;z-index:300;transform:translateY(80px);opacity:0;transition:all .3s;font-size:14px;box-shadow:var(--shadow2)}.tst.show{transform:translateY(0);opacity:1}.tst.ok{background:var(--ok);color:#fff}.tst.err{background:var(--dg);color:#fff}
-
-@media(max-width:768px){
-  .login-split{flex-direction:column}.login-left{padding:28px 24px}.login-left h1{font-size:28px}.login-right{padding:28px 24px}
-  .fgrid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-  .hdr-nav .bl{display:none}.hdr-user .nm,.hdr-user .rl{display:none}
-  .gas-bar{flex-direction:column;align-items:stretch}
-  .search-box input{width:100%}.tbar{gap:8px}
+.tst{position:fixed;bottom:20px;right:20px;padding:12px 22px;border-radius:8px;font-weight:700;z-index:300;transform:translateY(80px);opacity:0;transition:all .3s;font-size:13px;box-shadow:var(--sh2)}.tst.show{transform:translateY(0);opacity:1}.tst.ok{background:var(--ok);color:#fff}.tst.err{background:var(--dg);color:#fff}
+.mob-toggle{display:none;background:var(--g1);border:1px solid var(--g2);color:var(--o);font-size:20px;padding:6px 10px;border-radius:6px;cursor:pointer}
+@media(max-width:860px){
+.side{display:none;position:fixed;top:0;left:0;bottom:0;z-index:150;box-shadow:var(--sh2)}.side.mob{display:block}
+.mob-toggle{display:flex}
+.fgrid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.hn .bl{display:none}.hu .nm,.hu .rl{display:none}
+.gas-bar{flex-direction:column;align-items:stretch}
+.sbox input{width:160px}
+.lsp{flex-direction:column}.lL{padding:28px 24px}.lL h1{font-size:28px}.lR{padding:28px 24px}
 }
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
-<div class="login-ov" id="LS">
-<div class="login-split">
-<div class="login-left">
-  <h1>Technical<br>Publications</h1>
-  <p>ระบบคู่มือซ่อมบำรุงออนไลน์สำหรับทีมช่างเทคนิค<br>เข้าถึงคู่มือ Operation, Service, Part Manual และ Schematic ได้ทุกที่ทุกเวลา</p>
-  <div class="ll-badge">JLG &nbsp;|&nbsp; MAINTENANCE MANUAL SYSTEM</div>
-</div>
-<div class="login-right">
-  <h2>เข้าสู่ระบบ</h2>
-  <div class="lsub">กรอก Username และ Password ของคุณ</div>
-  <div class="lfg"><label>Username</label><input id="lu" placeholder="กรอก Username" onkeydown="if(event.key==='Enter')doLogin()"></div>
-  <div class="lfg"><label>Password</label><input type="password" id="lp" placeholder="กรอก Password" onkeydown="if(event.key==='Enter')doLogin()"></div>
-  <div class="lrem"><input type="checkbox" id="rm"><label for="rm">จดจำการเข้าสู่ระบบ</label></div>
-  <div class="lerr" id="le"></div>
-  <button class="lbtn" onclick="doLogin()">เข้าสู่ระบบ →</button>
-</div>
-</div></div>
+<div class="lov" id="LS">
+<div class="lsp">
+<div class="lL"><h1>Technical<br>Publications</h1><p>ระบบคู่มือซ่อมบำรุงออนไลน์สำหรับทีมช่าง<br>เข้าถึง Operation, Service, Part Manual และ Schematic ได้ทุกที่</p><div class="llb">JLG &nbsp;|&nbsp; MAINTENANCE MANUAL SYSTEM</div></div>
+<div class="lR"><h2>เข้าสู่ระบบ</h2><div class="ls">กรอก Username และ Password</div>
+<div class="fg"><label>Username</label><input id="lu" placeholder="Username" onkeydown="if(event.key==='Enter')doLogin()"></div>
+<div class="fg"><label>Password</label><input type="password" id="lp" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+<div class="lrm"><input type="checkbox" id="rm"><label for="rm">จดจำการเข้าสู่ระบบ</label></div>
+<div class="le" id="le"></div>
+<button class="lbt" onclick="doLogin()">เข้าสู่ระบบ →</button>
+</div></div></div>
 
-<!-- APP -->
 <div class="app" id="APP">
-<header class="hdr"><div class="hdr-m">
-  <div class="hdr-logo">
-    <div class="hdr-logo-box">JLG</div>
-    <div><h1>Technical <span>Publications</span></h1><small>Maintenance Manual System</small></div>
-  </div>
-  <div class="hdr-nav">
-    <div class="hdr-user"><div class="av" id="uAv">A</div><div><div class="nm" id="uNm">-</div><div class="rl" id="uRl">-</div></div></div>
-    <button class="btn bg bsm" onclick="doLogout()">🚪 <span class="bl">ออกจากระบบ</span></button>
-  </div>
-</div></header>
+<header class="hdr"><div class="hdr-m"><div class="hdr-logo"><button class="mob-toggle" onclick="document.getElementById('side').classList.toggle('mob')">☰</button><div class="hdr-lb">JLG</div><div><h1>Technical <span>Publications</span></h1><small>Maintenance Manual System</small></div></div><div class="hn"><div class="hu"><div class="av" id="uAv">A</div><div><div class="nm" id="uNm">-</div><div class="rl" id="uRl">-</div></div></div><button class="btn bg" onclick="doLogout()">🚪 <span class="bl">ออก</span></button></div></div></header>
 
-<div class="ex">
-  <div id="gasArea"></div>
-  <div class="tbar">
-    <div class="bcr" id="bcr"></div>
-    <div class="search-box"><span class="si">🔍</span><input id="sq" placeholder="ค้นหาไฟล์หรือโฟลเดอร์..." oninput="filterFiles()"></div>
-    <button class="btn bo bsm" id="btnUp" onclick="pickFile()" style="display:none">📤 อัปโหลด</button>
-    <button class="btn bg bsm" id="btnNf" onclick="newFolder()" style="display:none">📁 สร้างโฟลเดอร์</button>
-  </div>
-  <div id="content"></div>
+<div class="layout">
+<aside class="side" id="side">
+<div class="side-hd">Categories</div>
+<div id="sideMenu"></div>
+</aside>
+<main class="main">
+<div id="gasArea"></div>
+<div class="tbar">
+<div class="bcr" id="bcr"></div>
+<div class="sbox"><span class="si">🔍</span><input id="sq" placeholder="ค้นหา..." oninput="filterF()"></div>
+<button class="btn bo" id="btnUp" onclick="pickFile()" style="display:none">📤 อัปโหลด</button>
+<button class="btn bg" id="btnNf" onclick="newFolder()" style="display:none">📁 โฟลเดอร์ใหม่</button>
+</div>
+<div id="content"></div>
+</main>
 </div>
 </div>
 
-<!-- VIEWER -->
 <div class="pvw" id="pvw" onclick="if(event.target===this)closePV()">
-<div class="pvw-box"><div class="pvw-hd"><h3 id="pvwT">Document Preview</h3><button class="btn bg bsm" onclick="closePV()">✕ ปิด</button></div><div class="pvw-bd"><iframe id="pvwF"></iframe></div></div>
+<div class="pvw-bx"><div class="pvw-hd"><h3 id="pvwT">Preview</h3><button class="btn bg" onclick="closePV()">✕ ปิด</button></div><div class="pvw-bd"><iframe id="pvwF"></iframe></div></div>
 </div>
-
 <div class="tst" id="tt"></div>
-<input type="file" id="fIn" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.gif,.zip,.rar" style="display:none" multiple>
+<input type="file" id="fIn" style="display:none" multiple>
 
 <script>
 var USERS=[
@@ -181,136 +169,132 @@ var USERS=[
 {username:'tech12',password:'tech1234x',name:'ช่าง 12',role:'tech',display:'Technician'}
 ];
 var curUser=null,GAS=localStorage.getItem('jlg_gas')||'';
-var ROOT_ID='1NfXyo_lAhLKztNQDiKijhAuSdSiK_1z6';
-var navStack=[{id:ROOT_ID,name:'Home'}];
-var cachedData=null;
+var ROOT='1NfXyo_lAhLKztNQDiKijhAuSdSiK_1z6';
+var navStack=[{id:ROOT,name:'Home'}];
+var cached=null;
+// Sidebar categories — map folder names to categories
+var CATS=[
+{name:'Boom Lift',icon:'🏗️',cls:'boom',keywords:['boom lift','aichi boom lift']},
+{name:'Scissor Lift',icon:'✂️',cls:'scissor',keywords:['scissor lift']},
+{name:'Schematic',icon:'📐',cls:'sch',keywords:['schematic','electrical-hydraulic','schematics_smartphone']},
+{name:'Engine & Pump',icon:'⚙️',cls:'gen',keywords:['engine','pump','power electrical','battery charger']},
+{name:'ความรู้ทั่วไป',icon:'📚',cls:'cat',keywords:['training','timer relay','data sheet','catalogs','supplement','genie','jcb','liftpod','machine spec','fardriver','affinityguide']},
+];
 
 function doLogin(){
-  var u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value,f=null;
-  for(var i=0;i<USERS.length;i++){if(USERS[i].username===u&&USERS[i].password===p){f=USERS[i];break;}}
-  if(!f){document.getElementById('le').textContent='❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';return;}
-  curUser=f;
-  if(document.getElementById('rm').checked)localStorage.setItem('jlg_ses',JSON.stringify({username:f.username}));
-  showApp();
-}
+var u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value,f=null;
+for(var i=0;i<USERS.length;i++){if(USERS[i].username===u&&USERS[i].password===p){f=USERS[i];break;}}
+if(!f){document.getElementById('le').textContent='❌ Username หรือ Password ไม่ถูกต้อง';return;}
+curUser=f;if(document.getElementById('rm').checked)localStorage.setItem('jlg_ses',JSON.stringify({username:f.username}));showApp();}
 function doLogout(){curUser=null;localStorage.removeItem('jlg_ses');document.getElementById('APP').classList.remove('show');document.getElementById('LS').classList.remove('hid');document.getElementById('lu').value='';document.getElementById('lp').value='';document.getElementById('le').textContent='';}
 function checkSession(){var s=localStorage.getItem('jlg_ses');if(s){try{var d=JSON.parse(s);for(var i=0;i<USERS.length;i++){if(USERS[i].username===d.username){curUser=USERS[i];showApp();return;}}}catch(e){}}}
 
 function showApp(){
-  document.getElementById('LS').classList.add('hid');
-  document.getElementById('APP').classList.add('show');
-  document.getElementById('uNm').textContent=curUser.name;
-  document.getElementById('uRl').textContent=curUser.display;
-  document.getElementById('uAv').textContent=curUser.name.charAt(0);
-  var isAdm=curUser.role==='admin';
-  document.getElementById('btnUp').style.display=isAdm?'inline-flex':'none';
-  document.getElementById('btnNf').style.display=isAdm?'inline-flex':'none';
-  if(isAdm){document.getElementById('gasArea').innerHTML='<div class="gas-bar"><label>⚙️ API URL</label><input id="gasInp" value="'+GAS+'" placeholder="วาง Google Apps Script Web App URL ที่นี่ (https://script.google.com/macros/s/.../exec)"><button class="btn bo bsm" onclick="saveGas()">💾 บันทึก</button></div>';}
-  else{document.getElementById('gasArea').innerHTML='';}
-  navStack=[{id:ROOT_ID,name:'Home'}];
-  loadFolder(ROOT_ID);
-}
-function saveGas(){GAS=document.getElementById('gasInp').value.trim();localStorage.setItem('jlg_gas',GAS);toast('บันทึก API URL เรียบร้อย ✅');}
+document.getElementById('LS').classList.add('hid');document.getElementById('APP').classList.add('show');
+document.getElementById('uNm').textContent=curUser.name;document.getElementById('uRl').textContent=curUser.display;document.getElementById('uAv').textContent=curUser.name.charAt(0);
+var isA=curUser.role==='admin';
+document.getElementById('btnUp').style.display=isA?'inline-flex':'none';
+document.getElementById('btnNf').style.display=isA?'inline-flex':'none';
+if(isA){document.getElementById('gasArea').innerHTML='<div class="gas-bar"><label>⚙️ API URL</label><input id="gasInp" value="'+GAS+'" placeholder="https://script.google.com/macros/s/.../exec"><button class="btn bo" onclick="saveGas()">💾</button></div>';}
+else{document.getElementById('gasArea').innerHTML='';}
+navStack=[{id:ROOT,name:'Home'}];loadFolder(ROOT);}
+function saveGas(){GAS=document.getElementById('gasInp').value.trim();localStorage.setItem('jlg_gas',GAS);toast('บันทึก API URL ✅');}
 
+// ===== SIDEBAR =====
+function buildSidebar(folders){
+var sm=document.getElementById('sideMenu'),h='';
+// All
+h+='<div class="scat open"><div class="scat-h" onclick="goHome()"><div class="sci boom" style="background:rgba(242,101,34,0.12)">🏠</div><div class="sct">ทั้งหมด<small>All Files</small></div></div></div>';
+// Match folders to categories
+CATS.forEach(function(cat){
+var matched=[];
+folders.forEach(function(f){
+var ln=f.name.toLowerCase();
+for(var k=0;k<cat.keywords.length;k++){if(ln.indexOf(cat.keywords[k].toLowerCase())>=0){matched.push(f);break;}}
+});
+if(!matched.length)return;
+h+='<div class="scat"><div class="scat-h" onclick="this.parentElement.classList.toggle(\'open\')"><div class="sci '+cat.cls+'">'+cat.icon+'</div><div class="sct">'+cat.name+'<small>'+matched.length+' โฟลเดอร์</small></div><span class="sarr">▼</span></div><div class="scat-items">';
+matched.forEach(function(f){
+h+='<div class="scat-it" onclick="navToFolder(\''+f.id+'\',\''+esc(f.name)+'\')">📁 '+f.name+'</div>';
+});
+h+='</div></div>';
+});
+// Uncategorized
+var used={};CATS.forEach(function(cat){cat.keywords.forEach(function(kw){folders.forEach(function(f){var ln=f.name.toLowerCase();if(ln.indexOf(kw.toLowerCase())>=0)used[f.id]=true;});});});
+var uncat=folders.filter(function(f){return !used[f.id];});
+if(uncat.length){
+h+='<div class="scat"><div class="scat-h" onclick="this.parentElement.classList.toggle(\'open\')"><div class="sci cat">📂</div><div class="sct">อื่นๆ<small>'+uncat.length+' โฟลเดอร์</small></div><span class="sarr">▼</span></div><div class="scat-items">';
+uncat.forEach(function(f){h+='<div class="scat-it" onclick="navToFolder(\''+f.id+'\',\''+esc(f.name)+'\')">📁 '+f.name+'</div>';});
+h+='</div></div>';
+}
+sm.innerHTML=h;
+}
+
+function goHome(){navStack=[{id:ROOT,name:'Home'}];loadFolder(ROOT);document.getElementById('side').classList.remove('mob');}
+function navToFolder(id,name){navStack=[{id:ROOT,name:'Home'},{id:id,name:name}];loadFolder(id);document.getElementById('side').classList.remove('mob');}
+
+// ===== LOAD =====
 function loadFolder(fid){
-  if(!GAS){document.getElementById('content').innerHTML='<div class="emp"><div class="ei">⚙️</div><p>กรุณาตั้งค่า API URL ก่อน</p><p style="font-size:12px;margin-top:6px;color:var(--g3)">Admin: วาง URL จาก Google Apps Script ในช่องด้านบน</p></div>';renderBcr();return;}
-  document.getElementById('content').innerHTML='<div class="ld"><div class="sp"></div><br>กำลังโหลดข้อมูล...</div>';
-  renderBcr();
-  fetch(GAS,{method:'POST',body:JSON.stringify({action:'list',folderId:fid}),redirect:'follow'})
-  .then(function(r){return r.json();})
-  .then(function(res){if(res.success){cachedData=res.data;renderExplorer(res.data);}else{document.getElementById('content').innerHTML='<div class="emp"><div class="ei">❌</div><p>โหลดไม่สำเร็จ</p></div>';}})
-  .catch(function(){document.getElementById('content').innerHTML='<div class="emp"><div class="ei">🔌</div><p>เชื่อมต่อ API ไม่ได้</p><p style="font-size:12px;margin-top:6px;color:var(--g3)">ตรวจสอบ URL: ต้องเป็น https://script.google.com/macros/s/.../exec</p></div>';});
+if(!GAS){document.getElementById('content').innerHTML='<div class="emp"><div class="ei">⚙️</div><p>กรุณาตั้งค่า API URL ก่อน</p><p style="font-size:11px;color:var(--g3)">Admin วาง URL: https://script.google.com/macros/s/.../exec</p></div>';renderBcr();return;}
+document.getElementById('content').innerHTML='<div class="ld"><div class="sp"></div><br>กำลังโหลด...</div>';renderBcr();
+fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'list',folderId:fid})})
+.then(function(r){return r.json();})
+.then(function(res){if(res.success){cached=res.data;renderGrid(res.data);if(fid===ROOT)buildSidebar(res.data.folders);}else{document.getElementById('content').innerHTML='<div class="emp"><div class="ei">❌</div><p>โหลดไม่สำเร็จ</p></div>';}})
+.catch(function(){document.getElementById('content').innerHTML='<div class="emp"><div class="ei">🔌</div><p>เชื่อมต่อ API ไม่ได้</p><p style="font-size:11px;color:var(--g3)">URL ต้องเป็น https://script.google.com/macros/s/.../exec</p></div>';});
 }
-
 function renderBcr(){
-  var bc=document.getElementById('bcr'),h='';
-  for(var i=0;i<navStack.length;i++){
-    if(i>0)h+='<span class="sep">»</span>';
-    if(i<navStack.length-1)h+='<a onclick="goBack('+i+')">'+navStack[i].name+'</a>';
-    else h+='<span class="cur">'+navStack[i].name+'</span>';
-  }
-  bc.innerHTML=h;
-}
+var bc=document.getElementById('bcr'),h='';
+for(var i=0;i<navStack.length;i++){if(i>0)h+='<span class="sep">»</span>';if(i<navStack.length-1)h+='<a onclick="goBack('+i+')">'+navStack[i].name+'</a>';else h+='<span class="cur">'+navStack[i].name+'</span>';}
+bc.innerHTML=h;}
 function goBack(i){navStack=navStack.slice(0,i+1);loadFolder(navStack[i].id);}
-function openFolder(id,name){navStack.push({id:id,name:name});loadFolder(id);}
 
-function renderExplorer(data){
-  var c=document.getElementById('content'),isAdm=curUser&&curUser.role==='admin',sq=document.getElementById('sq').value.toLowerCase();
-  var folders=data.folders,files=data.files;
-  if(sq){
-    folders=folders.filter(function(f){return f.name.toLowerCase().indexOf(sq)>=0;});
-    files=files.filter(function(f){return f.name.toLowerCase().indexOf(sq)>=0;});
-  }
-  if(!folders.length&&!files.length){c.innerHTML='<div class="emp"><div class="ei">📭</div><p>'+(!sq?'โฟลเดอร์ว่าง':'ไม่พบไฟล์ที่ค้นหา')+'</p></div>';return;}
-  var h='<div class="fgrid">';
-  folders.forEach(function(f){
-    h+='<div class="fcard" onclick="openFolder(\''+f.id+'\',\''+esc(f.name)+'\')"><span class="folder-badge">FOLDER</span><span class="fic">📁</span><div class="fnm">'+f.name+'</div><div class="fmeta">โฟลเดอร์</div></div>';
-  });
-  files.forEach(function(f){
-    var icon=fIcon(f.ext,f.mimeType),sz=fSize(f.size);
-    h+='<div class="fcard" onclick="openFile(\''+f.id+'\',\''+esc(f.name)+'\',\''+f.viewUrl+'\',\''+f.ext+'\')">';
-    if(isAdm)h+='<button class="fdel" onclick="event.stopPropagation();delFile(\''+f.id+'\')">✕</button>';
-    h+='<span class="fic">'+icon+'</span><div class="fnm">'+f.name+'</div><div class="fmeta">'+sz+' · '+f.date+'</div>';
-    h+='<button class="fopen" onclick="event.stopPropagation();openFile(\''+f.id+'\',\''+esc(f.name)+'\',\''+f.viewUrl+'\',\''+f.ext+'\')">OPEN FILE</button>';
-    h+='</div>';
-  });
-  h+='</div>';c.innerHTML=h;
-}
-function filterFiles(){if(cachedData)renderExplorer(cachedData);}
+function renderGrid(data){
+var c=document.getElementById('content'),isA=curUser&&curUser.role==='admin',sq=document.getElementById('sq').value.toLowerCase();
+var fo=data.folders,fi=data.files;
+if(sq){fo=fo.filter(function(f){return f.name.toLowerCase().indexOf(sq)>=0;});fi=fi.filter(function(f){return f.name.toLowerCase().indexOf(sq)>=0;});}
+if(!fo.length&&!fi.length){c.innerHTML='<div class="emp"><div class="ei">📭</div><p>'+(sq?'ไม่พบ':'โฟลเดอร์ว่าง')+'</p></div>';return;}
+var h='<div class="fgrid">';
+fo.forEach(function(f){h+='<div class="fcard" onclick="openSubFolder(\''+f.id+'\',\''+esc(f.name)+'\')"><span class="fic">📁</span><div class="fnm">'+f.name+'</div><div class="fm">Folder</div></div>';});
+fi.forEach(function(f){
+var ic=fIco(f.ext),sz=fSz(f.size);
+h+='<div class="fcard" onclick="openFile(\''+f.id+'\',\''+esc(f.name)+'\',\''+f.viewUrl+'\',\''+f.ext+'\')">';
+if(isA)h+='<button class="fdel" onclick="event.stopPropagation();delF(\''+f.id+'\')">✕</button>';
+h+='<span class="fic">'+ic+'</span><div class="fnm">'+f.name+'</div><div class="fm">'+sz+' · '+f.date+'</div>';
+h+='<button class="fob" onclick="event.stopPropagation();openFile(\''+f.id+'\',\''+esc(f.name)+'\',\''+f.viewUrl+'\',\''+f.ext+'\')">OPEN</button>';
+h+='</div>';});
+h+='</div>';c.innerHTML=h;}
+function filterF(){if(cached)renderGrid(cached);}
+function openSubFolder(id,name){navStack.push({id:id,name:name});loadFolder(id);}
 function esc(s){return s.replace(/'/g,'').replace(/"/g,'');}
-function fIcon(ext,mime){
-  if(ext==='pdf')return '📕';if(ext==='doc'||ext==='docx')return '📘';if(ext==='xls'||ext==='xlsx')return '📗';
-  if(ext==='ppt'||ext==='pptx')return '📙';if(ext==='jpg'||ext==='jpeg'||ext==='png'||ext==='gif'||ext==='webp')return '🖼️';
-  if(ext==='zip'||ext==='rar'||ext==='7z')return '📦';if(ext==='mp4')return '🎬';return '📄';
-}
-function fSize(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(1)+' MB';}
+function fIco(e){if(e==='pdf')return'📕';if(e==='doc'||e==='docx')return'📘';if(e==='xls'||e==='xlsx')return'📗';if(e==='ppt'||e==='pptx')return'📙';if(e==='jpg'||e==='jpeg'||e==='png'||e==='gif')return'🖼️';if(e==='zip'||e==='rar')return'📦';return'📄';}
+function fSz(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(1)+' MB';}
 
-function openFile(id,name,viewUrl,ext){
-  if(ext==='pdf'||ext==='jpg'||ext==='jpeg'||ext==='png'||ext==='gif'){
-    document.getElementById('pvwT').textContent=name;
-    document.getElementById('pvwF').src=viewUrl;
-    document.getElementById('pvw').classList.add('open');
-  }else{window.open(viewUrl,'_blank');}
-}
+function openFile(id,name,url,ext){
+if(ext==='pdf'||ext==='jpg'||ext==='jpeg'||ext==='png'||ext==='gif'){document.getElementById('pvwT').textContent=name;document.getElementById('pvwF').src=url;document.getElementById('pvw').classList.add('open');}
+else{window.open(url,'_blank');}}
 function closePV(){document.getElementById('pvw').classList.remove('open');document.getElementById('pvwF').src='';}
 
 function pickFile(){
-  if(!GAS){toast('ตั้งค่า API URL ก่อน','err');return;}
-  var inp=document.getElementById('fIn');
-  inp.onchange=function(ev){
-    var files=ev.target.files;if(!files.length)return;
-    var curFid=navStack[navStack.length-1].id;
-    var uploaded=0,total=files.length;
-    toast('กำลังอัปโหลด '+total+' ไฟล์...');
-    for(var i=0;i<files.length;i++){(function(file){
-      var reader=new FileReader();
-      reader.onload=function(e){
-        var b64=e.target.result.split(',')[1];
-        fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'upload',folderId:curFid,fileName:file.name,mimeType:file.type||'application/octet-stream',fileBase64:b64})})
-        .then(function(r){return r.json();})
-        .then(function(d){uploaded++;if(uploaded>=total){toast('อัปโหลด '+total+' ไฟล์สำเร็จ ✅');loadFolder(curFid);}})
-        .catch(function(){uploaded++;if(uploaded>=total)loadFolder(curFid);});
-      };reader.readAsDataURL(file);
-    })(files[i]);}
-    inp.value='';
-  };inp.click();
-}
-function newFolder(){
-  if(!GAS){toast('ตั้งค่า API URL ก่อน','err');return;}
-  var name=prompt('ชื่อโฟลเดอร์ใหม่:');if(!name||!name.trim())return;
-  var curFid=navStack[navStack.length-1].id;
-  toast('กำลังสร้าง...');
-  fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'createFolder',folderId:curFid,folderName:name.trim()})})
-  .then(function(r){return r.json();}).then(function(d){if(d.success){toast('สร้างโฟลเดอร์สำเร็จ ✅');loadFolder(curFid);}}).catch(function(){toast('ล้มเหลว','err');});
-}
-function delFile(fid){
-  if(!confirm('ลบไฟล์นี้?'))return;
-  var curFid=navStack[navStack.length-1].id;
-  fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'delete',fileId:fid})})
-  .then(function(r){return r.json();}).then(function(){toast('ลบแล้ว');loadFolder(curFid);}).catch(function(){toast('ลบไม่สำเร็จ','err');});
-}
-function toast(m,t){var e=document.getElementById('tt');e.textContent=m;e.className='tst '+(t||'ok')+' show';setTimeout(function(){e.classList.remove('show');},3000);}
+if(!GAS)return toast('ตั้ง API URL ก่อน','err');
+var inp=document.getElementById('fIn');inp.onchange=function(ev){
+var files=ev.target.files;if(!files.length)return;
+var cid=navStack[navStack.length-1].id,done=0,tot=files.length;toast('อัปโหลด '+tot+' ไฟล์...');
+for(var i=0;i<files.length;i++){(function(file){var r=new FileReader();r.onload=function(e){
+fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'upload',folderId:cid,fileName:file.name,mimeType:file.type||'application/octet-stream',fileBase64:e.target.result.split(',')[1]})})
+.then(function(r){return r.json();}).then(function(){done++;if(done>=tot){toast(tot+' ไฟล์สำเร็จ ✅');loadFolder(cid);}}).catch(function(){done++;if(done>=tot)loadFolder(cid);});
+};r.readAsDataURL(file);})(files[i]);}inp.value='';};inp.click();}
 
+function newFolder(){
+if(!GAS)return toast('ตั้ง API URL ก่อน','err');
+var n=prompt('ชื่อโฟลเดอร์ใหม่:');if(!n||!n.trim())return;
+var cid=navStack[navStack.length-1].id;
+fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'createFolder',folderId:cid,folderName:n.trim()})})
+.then(function(r){return r.json();}).then(function(d){if(d.success){toast('สร้างสำเร็จ ✅');loadFolder(cid);}}).catch(function(){toast('ล้มเหลว','err');});}
+
+function delF(fid){if(!confirm('ลบไฟล์นี้?'))return;var cid=navStack[navStack.length-1].id;
+fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'delete',fileId:fid})}).then(function(r){return r.json();}).then(function(){toast('ลบแล้ว');loadFolder(cid);}).catch(function(){toast('ลบไม่สำเร็จ','err');});}
+
+function toast(m,t){var e=document.getElementById('tt');e.textContent=m;e.className='tst '+(t||'ok')+' show';setTimeout(function(){e.classList.remove('show');},3000);}
 checkSession();
 </script>
 </body>
