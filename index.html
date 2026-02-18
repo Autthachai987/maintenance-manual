@@ -203,7 +203,7 @@ if(!GAS){document.getElementById('content').innerHTML='<div class="emp"><div cla
 document.getElementById('content').innerHTML='<div class="ld"><div class="sp"></div><br>กำลังโหลด...</div>';renderBcr();
 fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'list',folderId:fid,username:curUser?curUser.username:'',role:curUser?curUser.role:'tech'})})
 .then(function(r){return r.json();})
-.then(function(res){if(res.success){cached=res.data;renderGrid(res.data);if(fid===ROOT)buildSidebar(res.data.folders);}else{document.getElementById('content').innerHTML='<div class="emp"><div class="ei">❌</div><p>โหลดไม่สำเร็จ</p></div>';}})
+.then(function(res){if(res.success){cached=res.data;renderGrid(res.data);buildSidebarIfRoot(fid, res.data.folders);}else{document.getElementById('content').innerHTML='<div class="emp"><div class="ei">❌</div><p>โหลดไม่สำเร็จ</p></div>';}})
 .catch(function(){document.getElementById('content').innerHTML='<div class="emp"><div class="ei">🔌</div><p>เชื่อมต่อ API ไม่ได้</p><p style="font-size:11px;color:var(--g3)">ใช้ URL: https://script.google.com/macros/s/.../exec</p></div>';});}
 function renderBcr(){var bc=document.getElementById('bcr'),h='';for(var i=0;i<navStack.length;i++){if(i>0)h+='<span class="sep">»</span>';if(i<navStack.length-1)h+='<a onclick="goBack('+i+')">'+navStack[i].name+'</a>';else h+='<span class="cur">'+navStack[i].name+'</span>';}bc.innerHTML=h;}
 function goBack(i){navStack=navStack.slice(0,i+1);loadFolder(navStack[i].id);}
@@ -263,10 +263,21 @@ fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'setVisib
 }
 
 // UPLOAD
-function pickFile(){if(!GAS)return toast('ตั้ง API URL ก่อน','err');var inp=document.getElementById('fIn');inp.onchange=function(ev){var files=ev.target.files;if(!files.length)return;var cid=navStack[navStack.length-1].id,done=0,tot=files.length;toast('อัปโหลด '+tot+' ไฟล์...');for(var i=0;i<files.length;i++){(function(file){var r=new FileReader();r.onload=function(e){fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'upload',folderId:cid,fileName:file.name,mimeType:file.type||'application/octet-stream',fileBase64:e.target.result.split(',')[1]})}).then(function(r){return r.json();}).then(function(){done++;if(done>=tot){toast(tot+' ไฟล์สำเร็จ ✅');loadFolder(cid);}}).catch(function(){done++;if(done>=tot)loadFolder(cid);});};r.readAsDataURL(file);})(files[i]);}inp.value='';};inp.click();}
-function newFolder(){if(!GAS)return toast('ตั้ง API URL ก่อน','err');var n=prompt('ชื่อโฟลเดอร์ใหม่:');if(!n||!n.trim())return;var cid=navStack[navStack.length-1].id;fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'createFolder',folderId:cid,folderName:n.trim()})}).then(function(r){return r.json();}).then(function(d){if(d.success){toast('สร้างสำเร็จ ✅');loadFolder(cid);}}).catch(function(){toast('ล้มเหลว','err');});}
-function delF(fid){if(!confirm('ลบไฟล์นี้?'))return;var cid=navStack[navStack.length-1].id;fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'delete',fileId:fid})}).then(function(r){return r.json();}).then(function(){toast('ลบแล้ว');loadFolder(cid);}).catch(function(){toast('ลบไม่สำเร็จ','err');});}
+function pickFile(){if(!GAS)return toast('ตั้ง API URL ก่อน','err');var inp=document.getElementById('fIn');inp.onchange=function(ev){var files=ev.target.files;if(!files.length)return;var cid=navStack[navStack.length-1].id,done=0,tot=files.length;toast('อัปโหลด '+tot+' ไฟล์...');for(var i=0;i<files.length;i++){(function(file){var r=new FileReader();r.onload=function(e){fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'upload',folderId:cid,fileName:file.name,mimeType:file.type||'application/octet-stream',fileBase64:e.target.result.split(',')[1]})}).then(function(r){return r.json();}).then(function(){done++;if(done>=tot){toast(tot+' ไฟล์สำเร็จ ✅');loadFolder(cid);refreshSidebar();}}).catch(function(){done++;if(done>=tot)loadFolder(cid);});};r.readAsDataURL(file);})(files[i]);}inp.value='';};inp.click();}
+function newFolder(){if(!GAS)return toast('ตั้ง API URL ก่อน','err');var n=prompt('ชื่อโฟลเดอร์ใหม่:');if(!n||!n.trim())return;var cid=navStack[navStack.length-1].id;fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'createFolder',folderId:cid,folderName:n.trim()})}).then(function(r){return r.json();}).then(function(d){if(d.success){toast('สร้างสำเร็จ ✅');loadFolder(cid);refreshSidebar();}}).catch(function(){toast('ล้มเหลว','err');});}
+function delF(fid){if(!confirm('ลบไฟล์นี้?'))return;var cid=navStack[navStack.length-1].id;fetch(GAS,{method:'POST',redirect:'follow',body:JSON.stringify({action:'delete',fileId:fid})}).then(function(r){return r.json();}).then(function(){toast('ลบแล้ว');loadFolder(cid);refreshSidebar();}).catch(function(){toast('ลบไม่สำเร็จ','err');});}
 function toast(m,t){var e=document.getElementById('tt');e.textContent=m;e.className='tst '+(t||'ok')+' show';setTimeout(function(){e.classList.remove('show');},3000);}
+
+function buildSidebarIfRoot(fid, folders) {
+  if (fid === ROOT) { buildSidebar(folders); }
+}
+function refreshSidebar() {
+  if (!GAS) return;
+  fetch(GAS, {method:'POST', redirect:'follow', body:JSON.stringify({action:'list', folderId:ROOT, username:curUser?curUser.username:'', role:curUser?curUser.role:'tech'})})
+  .then(function(r){return r.json();})
+  .then(function(res){if(res.success) buildSidebar(res.data.folders);})
+  .catch(function(){});
+}
 checkSession();
 </script>
 </body>
