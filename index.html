@@ -161,11 +161,14 @@ var ROOT='1NfXyo_lAhLKztNQDiKijhAuSdSiK_1z6';
 var navStack=[{id:ROOT,name:'Home'}],cached=null,visTarget=null;
 
 var CATS=[
-{name:'Boom Lift',icon:'🏗️',cls:'boom',kw:['boom lift','aichi boom lift']},
-{name:'Scissor Lift',icon:'✂️',cls:'scissor',kw:['scissor lift']},
+{name:'Boom Lift - เครื่องยนต์',icon:'🏗️',cls:'boom',kw:['460sj','660sj','600sc','660sjc','1200sjp','800s','450aj','450ajs2','1500ajp','860sj','800aj','800a','1100sj','600aj','1350sjp','1250ajp','510aj','boom lift']},
+{name:'Boom Lift - ไฟฟ้า',icon:'⚡',cls:'scissor',kw:['e300ajp','e400ajpn','e450aj','e33mj','e18mj','e26mj','e600','ec600sj','e600jp','e12']},
+{name:'Scissor Lift - เครื่องยนต์',icon:'✂️',cls:'gen',kw:['4069le','4669le','m4069le','m600jp','m600j','m600','4045r','3246r','scissor lift']},
+{name:'Scissor Lift - ไฟฟ้า',icon:'🔋',cls:'sch',kw:['3246es','1230es','1930es','2030es','2630es','2646es','15mvl','20mvl','1932r','es2632','es3246','es1932','hl-220e25','hl-190','toucan_10','toucan_12','x33jp','x33jp_dc']},
+{name:'Telehandler',icon:'🏗️',cls:'boom',kw:['18rs','24rs','41am']},
 {name:'Schematic',icon:'📐',cls:'sch',kw:['schematic','electrical-hydraulic','schematics_smartphone']},
 {name:'Engine & Pump',icon:'⚙️',cls:'gen',kw:['engine','pump','power electrical','battery charger']},
-{name:'ความรู้ทั่วไป',icon:'📚',cls:'cat',kw:['training','timer relay','data sheet','catalogs','supplement','genie','jcb','liftpod','machine spec','fardriver','affinityguide']},
+{name:'ความรู้ทั่วไป',icon:'📚',cls:'cat',kw:['training','timer relay','data sheet','catalogs','supplement','genie','jcb','liftpod','machine spec','fardriver','affinityguide','thai-dev','new folder']},
 ];
 
 function doLogin(){var u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value,f=null;for(var i=0;i<USERS.length;i++){if(USERS[i].username===u&&USERS[i].password===p){f=USERS[i];break;}}if(!f){document.getElementById('le').textContent='❌ Username หรือ Password ไม่ถูกต้อง';return;}curUser=f;if(document.getElementById('rm').checked)localStorage.setItem('jlg_ses',JSON.stringify({username:f.username}));showApp();}
